@@ -1,17 +1,53 @@
-﻿<!DOCTYPE html> 
+<!DOCTYPE html> 
 <html>
 <head>
-	<title>Page Title</title>
+	<title>Be.In</title>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/jquery.mobile-1.4.2.min.js"></script>
+	<script id="panel-init">
+		$(function() {
+			$("body>[data-role='panel']").panel({
+				create: function(e,u){
+					$('#listaPanel').listview().enhanceWithin();
+					console.log('AbrePanel');
+				}
+			});
+		});
+	</script>
+	<script>
+		$(function(){
+		});
+	</script>
 </head>
 
 <body>
-
+<!-- El siquiente es el panel que se aplicará a TODAS las páginas. Ver script "panel-init" -->
+    <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="b" id="nav-panel">
+        <ul data-role="listview" id="listaPanel">
+            <li data-icon="delete"><a href="#" data-rel="close">Cerrar menú</a></li>
+            <li><a href="#inicial">Página inicial</a></li>
+            <li><a href="#">Opción 2</a></li>
+        </ul>
+    </div><!-- /panel -->
+<!-- Primera página, de configuración -->
 <div data-role="page" id="configuracion">
 	<!-- En la primera página no va contenido, porque es la que determina si hay o no configuración establecida -->
+    <div data-role="header" data-position="fixed">
+        <h1>Configuración</h1>
+        <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menú</a>
+    </div><!-- /header -->
+	<div role="main" class="ui-content">
+		Contenido
+	</div><!-- /ui-content -->
+	<div data-role="footer">
+		Pie
+	</div><!-- /footer -->
+</div><!-- cierre de page -->
+<!-- Página inicial de contenido -->
+<div data-role="page" id="inicial">
 	<div data-role="header">
 		Encabezado
 	</div>
@@ -21,19 +57,7 @@
 	<div data-role="footer">
 		Pie
 	</div>
-</div>
-
-<div data-role="page" id="configuracion1">
-	<div data-role="header">
-		Encabezado
-	</div>
-	<div role="main" class="ui-content">
-		Contenido
-	</div>
-	<div data-role="footer">
-		Pie
-	</div>
-</div>
+</div><!-- cierre de page -->
 
 </body>
 </html>
