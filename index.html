@@ -12,13 +12,15 @@
 			$("body>[data-role='panel']").panel({
 				create: function(e,u){
 					$('#listaPanel').listview().enhanceWithin();
-					console.log('AbrePanel');
 				}
 			});
 		});
 	</script>
 	<script>
 		$(function(){
+			$( "[data-role='header'], [data-role='footer']" ).toolbar({
+				theme: 'a'
+			});
 		});
 	</script>
 </head>
@@ -32,30 +34,32 @@
             <li><a href="#">Opción 2</a></li>
         </ul>
     </div><!-- /panel -->
-<!-- Primera página, de configuración -->
-<div data-role="page" id="configuracion">
-	<!-- En la primera página no va contenido, porque es la que determina si hay o no configuración establecida -->
+    
+<!-- El siguiente es el header que se aplicará a TODAS las páginas. -->
     <div data-role="header" data-position="fixed">
         <h1>Configuración</h1>
         <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menú</a>
     </div><!-- /header -->
+    
+<!-- Es siguientes es el footer que se aplicará a TODAS las páginas -->
+	<div data-role="footer" data-position="fixed">
+		<h1>Pie</h1>
+	</div><!-- /footer -->
+
+<!--------------------------- Inicio del contenido ------------------>
+
+<!-- Primera página, de configuración -->
+<div data-role="page" id="configuracion">
+	<!-- En la primera página no va contenido, porque es la que determina si hay o no configuración establecida -->
 	<div role="main" class="ui-content">
 		Contenido
 	</div><!-- /ui-content -->
-	<div data-role="footer">
-		Pie
-	</div><!-- /footer -->
 </div><!-- cierre de page -->
+
 <!-- Página inicial de contenido -->
 <div data-role="page" id="inicial">
-	<div data-role="header">
-		Encabezado
-	</div>
 	<div role="main" class="ui-content">
-		Contenido
-	</div>
-	<div data-role="footer">
-		Pie
+		Contenido página inicial
 	</div>
 </div><!-- cierre de page -->
 
