@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.bein-app.app"
+        versionCode = "1" 
+        version     = "0.0.1" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>BeIn</name>
+
+    <description>
+        ¡Decide cómo vestirte hoy! 
+    </description>
+
+    <author href="http://www.bein-app.com" email="info@bein-app.com">
+        BeIn Grupo de diseño 
+    </author>
+
+</widget>
