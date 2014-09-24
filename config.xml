@@ -16,5 +16,8 @@
     <author href="http://www.bein-app.com" email="info@bein-app.com">
         BeIn Grupo de diseño 
     </author>
+    
+    <gap:plugin name="org.apache.cordova.media-capture" version="0.2.8" />
+    <gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
 
 </widget>
