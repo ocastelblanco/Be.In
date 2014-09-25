@@ -43,6 +43,9 @@ $.when(jqmReady, pgReady).then(function() {
       app.callback();
    }
    console.log("Frameworks ready. Inicia captura.");
+});
+app.initialize(function() {
+   //Do something
     // Código de ejemplo desde cordova.apache.org
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
