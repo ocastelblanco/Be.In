@@ -34,13 +34,16 @@
 
 <body>
 <script>
-	navigator.camera.getPicture(function(uri){
-		var largeImage = document.getElementById('imagen');
-		largeImage.src = uri;
-	}, function(mensaje){
-		console.log("Error: "+mensaje);
-	}, {quality: 50, destinationType: destinationType.FILE_URI});
+	function tomarFoto() {
+		navigator.camera.getPicture(function(uri){
+			var largeImage = document.getElementById('imagen');
+			largeImage.src = uri;
+		}, function(mensaje){
+			console.log("Error: "+mensaje);
+		}, {quality: 50, destinationType: destinationType.FILE_URI});
+	}
 </script>
+<button onclick="tomarFoto" id="foto">Click para tomarse una foto</button>
 <img id="imagen" src="">
 <!-- El siquiente es el panel que se aplicará a TODAS las páginas. Ver script "panel-init" ->
     <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="a" id="nav-panel">
