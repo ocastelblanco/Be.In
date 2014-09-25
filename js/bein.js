@@ -12,8 +12,8 @@ var app = {
       var browser = document.URL.match(/^https?:/);
       if(browser) {
         console.log("Is web.");
-        //In case of web we ignore PG but resolve the Deferred Object to trigger initialization
-	 pgReady.resolve();
+        //In case of web we ignore PhoneGap but resolve the Deferred Object to trigger initialization
+	    pgReady.resolve();
       } else {
         console.log("Is not web.");
 	    this.bindEvents();
@@ -21,6 +21,7 @@ var app = {
    }, bindEvents: function() {
       document.addEventListener('deviceready', this.onDeviceReady, false);
    }, onDeviceReady: function() {
+       console.log("Cordova PhoneGap inicializado");
       // The scope of 'this' is the event, hence we need to use app.
       app.receivedEvent('deviceready');
    }, receivedEvent: function(event) {
@@ -32,6 +33,7 @@ var app = {
    }
 };
 $(document).on("pageinit", function(event, ui) {
+    console.log("jquerymobile inicializado");
    jqmReady.resolve();
 });
 /**
