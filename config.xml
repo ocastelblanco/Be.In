@@ -17,7 +17,6 @@
         Be.In Grupo de diseño 
     </author>
     
-    <gap:plugin name="org.apache.cordova.media-capture" version="0.2.8" />
     <gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
 
 </widget>
