@@ -33,18 +33,18 @@ var app = {
    }
 };
 $(document).on("pageinit", function(event, ui) {
-    console.log("jquerymobile inicializado");
+    console.log("jQueryMobile inicializado");
    jqmReady.resolve();
 });
 /**
  * General initialization.
  */
 $.when(jqmReady, pgReady).then(function() {
+   console.log("Frameworks ready. Inicia captura.");
    //Initialization code here
    if(app.callback) {
       app.callback();
    }
-   console.log("Frameworks ready. Inicia captura.");
 });
 app.initialize(function() {
    //Do something
@@ -56,7 +56,7 @@ app.initialize(function() {
     // device APIs are available
     //function onDeviceReady() {
         console.log("Dispositivo listo");
-        $('#botonesFoto').show();
+        $('#botonesFoto').show();/*
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     //}
@@ -102,4 +102,6 @@ app.initialize(function() {
         console.log('Failed because: ' + message);
       alert('Failed because: ' + message);
     }
+/*
+*/
 });
