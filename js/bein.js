@@ -12,16 +12,19 @@ var app = {
       var browser = document.URL.match(/^https?:/);
       if(browser) {
         console.log("Is web.");
+        $('#salida').append('Es web<br>');
         //In case of web we ignore PhoneGap but resolve the Deferred Object to trigger initialization
 	    pgReady.resolve();
       } else {
         console.log("Is not web.");
+        $('#salida').append('Es app<br>');
 	    this.bindEvents();
       }
    }, bindEvents: function() {
       document.addEventListener('deviceready', this.onDeviceReady, false);
    }, onDeviceReady: function() {
        console.log("Cordova PhoneGap inicializado");
+        $('#salida').append('Cordova PhoneGap inicializado<br>');
       // The scope of 'this' is the event, hence we need to use app.
       app.receivedEvent('deviceready');
    }, receivedEvent: function(event) {
@@ -34,6 +37,7 @@ var app = {
 };
 $(document).on("pageinit", function(event, ui) {
     console.log("jQueryMobile inicializado");
+    $('#salida').append('jQueryMobile inicializado<br>');
    jqmReady.resolve();
 });
 /**
@@ -41,6 +45,7 @@ $(document).on("pageinit", function(event, ui) {
  */
 $.when(jqmReady, pgReady).then(function() {
    console.log("Frameworks ready. Inicia captura.");
+    $('#salida').append('Frameworks ready. Inicia captura<br>');
    //Initialization code here
    if(app.callback) {
       app.callback();
@@ -50,10 +55,11 @@ app.initialize(function() {
    //Do something
    iniciarCamara();
 });
+var pictureSource;
+var destinationType;
 function iniciarCamara() {
-    var pictureSource;
-    var destinationType;
     console.log("Dispositivo listo");
+    $('#salida').append('Dispositivo listo<br>');
     $('#botonesFoto').show();
     pictureSource=navigator.camera.PictureSourceType;
     destinationType=navigator.camera.DestinationType;
