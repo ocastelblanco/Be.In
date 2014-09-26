@@ -48,6 +48,9 @@ $.when(jqmReady, pgReady).then(function() {
 });
 app.initialize(function() {
    //Do something
+   iniciarCamara();
+});
+function iniciarCamara() {
     // Código de ejemplo desde cordova.apache.org
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
@@ -87,7 +90,6 @@ app.initialize(function() {
     // A button will call this functions -------\/
     function capturePhoto() {
         console.log('Iniciando captura');
-        alert('Captura de foto');
       // Take picture using device camera and retrieve image as base64-encoded string
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, {quality: 50, destinationType: destinationType.DATA_URL});
     }
@@ -106,6 +108,4 @@ app.initialize(function() {
         console.log('Failed because: ' + message);
       alert('Failed because: ' + message);
     }
-/*
-*/
-});
+}
