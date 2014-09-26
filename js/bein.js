@@ -56,7 +56,7 @@ app.initialize(function() {
     // device APIs are available
     //function onDeviceReady() {
         console.log("Dispositivo listo");
-        $('#botonesFoto').show();/*
+        $('#botonesFoto').show();
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     //}
