@@ -82,8 +82,45 @@
 <div data-role="page" id="inicial">
 	<div role="main" class="ui-content">
 		Contenido página inicial
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<div class="ui-bar ui-bar-a" style="height:60px">
+					Foto A
+				</div>
+			</div>
+			<div class="ui-block-b">
+				<img src="" id="smallImage" style="display: none; width: 100%; height: auto;">
+				<div class="ui-bar ui-bar-a" id="divFotoB" style="height:60px">
+					<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-notext botonTomarFoto">Nueva foto</a>
+				</div>
+			</div>
+		</div><!-- /grid-a -->
+		<button onclick="capturePhoto();">Capture Photo</button>
 	</div>
+	<!-- popup -->
+	<div data-role="popup" id="tomarFotoDialogo" data-overlay-theme="b" data-dismissible="false">
+		<div data-role="header" data-theme="a">
+			<h1>Seleccione el origen de la imagen</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<div class="ui-bar ui-bar-a" style="height:60px">
+						<a href="#" class="ui-btn ui-icon-camera ui-btn-icon-left" onclick="capturePhoto();">
+							Capturar con la cámara
+						</a>
+					</div>
+				</div>
+				<div class="ui-block-b">
+					<div class="ui-bar ui-bar-a" style="height:60px">
+						<a href="#" class="ui-btn ui-icon-grid ui-btn-icon-left" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">
+							Elegir una imagen desde el dispositivo
+						</a>
+					</div>
+				</div>
+			</div><!-- /grid-a -->
+		</div>
+	</div><!-- /popup -->
 </div><!-- cierre de page -->
-
 </body>
 </html>

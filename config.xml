@@ -17,6 +17,9 @@
         Be.In Grupo de diseño 
     </author>
     
+    <gap:splash src="splash.png" />
+    
     <gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
+    <gap:plugin name="org.apache.cordova.splashscreen" version="0.2.7" />
 
 </widget>
