@@ -60,6 +60,8 @@ function iniciaDispositivo() {
     /* */
 }
 function onPhotoDataSuccess(imageData) {
+    $('#tomarFotoDialogo').popup('close');
+    $('#divFotoB').hide();
     var smallImage = document.getElementById('smallImage');
     smallImage.style.display = 'block';
     smallImage.src = "data:image/jpeg;base64," + imageData;
