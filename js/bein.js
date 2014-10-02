@@ -53,7 +53,7 @@ app.initialize(function() {
 });
 function iniciaDispositivo() {
     $('#salida').append('Dispositivo listo<br>');
-    /* */
+    /* *
     pictureSource=navigator.camera.PictureSourceType;
     destinationType=navigator.camera.DestinationType;
     navigator.splashscreen.hide();

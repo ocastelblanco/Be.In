@@ -11,3 +11,7 @@
     height: 100%;
     margin-top: 0;
 }
+.ui-icon-go:after {
+    background-image: url("../icons/go.svg");
+    background-size: 18px 18px;
+}

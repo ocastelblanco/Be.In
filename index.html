@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/bein.css" />
 	<script type="text/javascript" charset="utf-8" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.2.min.js"></script>
-	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<!-- script type="text/javascript" charset="utf-8" src="cordova.js"></script-->
 	<script type="text/javascript" charset="utf-8" src="js/bein.js"></script>
 	<script id="panel-init">
 		$(function() {
@@ -35,10 +35,10 @@
         <a href="#" class="ui-btn" data-rel="close">Anchor</a>
 		<div data-role="collapsible-set" class="ui-collapsible-set" data-corners="false" data-collapsed-icon="carat-r" data-expanded-icon="carat-d" data-theme="b" id="colapsible">
 			<div data-role="collapsible" data-collapsed="false">
-				<h3>¿Qué me pongo?</h3>
+				<h3>Me voy a vestir</h3>
 		        <ul data-role="listview" data-theme="a">
-		            <li><a href="#inicial">Página inicial</a></li>
-		            <li><a href="#">Opción 2</a></li>
+		            <li class="ui-icon-left ui-icon-go"><a href="#inicial">Página inicial</a></li>
+		            <li><a href="#pagina2">Opción 2</a></li>
 		        </ul>
 			</div><!-- collapsible -->
 			<div data-role="collapsible">
@@ -121,5 +121,21 @@
 		</div>
 	</div><!-- /popup -->
 </div><!-- cierre de page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" id="pagina2">
+	<div class="ui-content">
+		
+	</div>
+</div><!-- Cierre de la page -->
+
+
+<!-- Inicio de la page -->
+<div role-page="page" id="pagina3">
+	<div class="ui-content">
+		
+	</div>
+</div><!-- Cierre de la page -->
+
 </body>
 </html>
