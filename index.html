@@ -21,9 +21,10 @@
 	</script>
 	<script>
 		$(function(){
-			$( "[data-role='header'], [data-role='footer']" ).toolbar({
+			$("[data-role='header']").toolbar({
 				theme: 'a'
 			});
+			//$("[data-role='footer']").toolbar({theme:'a'});
 		});
 	</script>
 	-->
@@ -34,15 +35,15 @@
     <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="a" id="nav-panel">
         <a href="#" class="ui-btn" data-rel="close">Anchor</a>
 		<div data-role="collapsible-set" class="ui-collapsible-set" data-corners="false" data-collapsed-icon="carat-r" data-expanded-icon="carat-d" data-theme="b" id="colapsible">
-			<div data-role="collapsible" data-collapsed="false">
-				<h3>Me voy a vestir</h3>
+			<div data-role="collapsible" data-collapsed="false" data-iconpos="right">
+				<h3><i class="bein-icon ui-icon-go"></i>Me voy a vestir</h3>
 		        <ul data-role="listview" data-theme="a">
-		            <li class="ui-icon-left ui-icon-go"><a href="#inicial">Página inicial</a></li>
-		            <li><a href="#pagina2">Opción 2</a></li>
+		            <li><a href="#inicial"><i class="bein-icon ui-icon-uni"></i>Universidad</a></li>
+		            <li><a href="#pagina2"><i class="bein-icon ui-icon-plan"></i>De plan</a></li>
 		        </ul>
 			</div><!-- collapsible -->
-			<div data-role="collapsible">
-				<h3>Mi Armario</h3>
+			<div data-role="collapsible" data-iconpos="right">
+				<h3><i class="bein-icon ui-icon-gancho"></i>Mi Armario</h3>
 				<p>I'm the collapsibleset content for section 2.</p>
 			</div><!-- collapsible -->
 		</div><!-- /collapsible-set -->
@@ -54,7 +55,7 @@
         <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menú</a>
     </div><!-- /header -->
     
-<!-- Es siguientes es el footer que se aplicará a TODAS las páginas -->
+<!-- Es siguientes es el footer que se aplicará a TODAS las páginas ->
 	<div data-role="footer" data-position="fixed">
 		<h1>Pie</h1>
 	</div><!-- /footer -->
@@ -86,46 +87,43 @@
 			<div class="ui-block-a">
 				<div class="ui-bar ui-bar-a" style="height:60px">
 					Foto A
-				</div>
-			</div>
+				</div><!-- /ui-bar -->
+			</div><!-- /ui-block-a -->
 			<div class="ui-block-b">
-				<img src="" id="smallImage" style="display: none; width: 100%; height: auto;">
+				<img src="" id="smallImage" style="display: none; width: 100%; height: auto;" />
 				<div class="ui-bar ui-bar-a" id="divFotoB" style="height:60px">
 					<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-notext botonTomarFoto">Nueva foto</a>
-				</div>
-			</div>
+				</div><!-- /ui-bar -->
+			</div><!-- /ui-block-b -->
 		</div><!-- /grid-a -->
-	</div>
+	</div><!-- /ui-content -->
 	<!-- popup -->
 	<div data-role="popup" id="tomarFotoDialogo" data-overlay-theme="b" data-dismissible="false">
-		<div data-role="header" data-theme="a">
-			<h1>Seleccione el origen de la imagen</h1>
-		</div>
+		<!--div data-role="header"></div-->
 		<div role="main" class="ui-content">
+			<h4>Seleccione el origen de la imagen</4>
+			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
 			<div class="ui-grid-a">
 				<div class="ui-block-a">
-					<div class="ui-bar ui-bar-a" style="height:60px">
-						<a href="#" class="ui-btn ui-icon-camera ui-btn-icon-left" onclick="capturePhoto();">
-							Capturar con la cámara
+						<a href="#" class="ui-btn ui-icon-camera ui-btn-icon-top" onclick="capturePhoto();">
+							Cámara
 						</a>
-					</div>
-				</div>
+				</div><!-- /ui-block-a -->
 				<div class="ui-block-b">
-					<div class="ui-bar ui-bar-a" style="height:60px">
-						<a href="#" class="ui-btn ui-icon-grid ui-btn-icon-left" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">
-							Elegir una imagen desde el dispositivo
+						<a href="#" class="ui-btn ui-icon-grid ui-btn-icon-top" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">
+							Desde la galería
 						</a>
-					</div>
-				</div>
+				</div><!-- /ui-block-b -->
 			</div><!-- /grid-a -->
-		</div>
+		</div><!-- /ui-content -->
 	</div><!-- /popup -->
 </div><!-- cierre de page -->
 
 <!-- Inicio de la page -->
 <div role-page="page" id="pagina2">
 	<div class="ui-content">
-		
+		Contenido de la página 2
+		<a href="#pagina3" class="ui-btn ui-btn-icon-left ui-icon-blusa">Ir página 3</a>
 	</div>
 </div><!-- Cierre de la page -->
 
@@ -133,7 +131,7 @@
 <!-- Inicio de la page -->
 <div role-page="page" id="pagina3">
 	<div class="ui-content">
-		
+		Otro contenido en la pagina 3
 	</div>
 </div><!-- Cierre de la page -->
 

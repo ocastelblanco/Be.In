@@ -3,6 +3,7 @@
  */
 var jqmReady = $.Deferred();
 var pgReady = $.Deferred();
+var esPG = false;
 var pictureSource;
 var destinationType;
 var app = {
@@ -19,6 +20,7 @@ var app = {
         } else {
             $('#salida').append('Es app<br>');
             this.bindEvents();
+            esPG = true;
         }
     }, bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
@@ -53,10 +55,12 @@ app.initialize(function() {
 });
 function iniciaDispositivo() {
     $('#salida').append('Dispositivo listo<br>');
-    /* *
-    pictureSource=navigator.camera.PictureSourceType;
-    destinationType=navigator.camera.DestinationType;
-    navigator.splashscreen.hide();
+    /* */
+    if (esPG) {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+        navigator.splashscreen.hide();
+    }
     /* */
 }
 function onPhotoDataSuccess(imageData) {

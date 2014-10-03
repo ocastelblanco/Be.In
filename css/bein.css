@@ -3,7 +3,7 @@
     padding: 0;
     margin-top: -0.5em;
 }
-.ui-panel-inner [data-role="collapsible-set"] {
+.ui-panel-inner .ui-collapsible-set {
     margin-top: -0.5em;
 }
 .botonTomarFoto {
@@ -11,7 +11,42 @@
     height: 100%;
     margin-top: 0;
 }
-.ui-icon-go:after {
-    background-image: url("../icons/go.svg");
+.bein-icon:after {
+    background-color: #666;
+    background-color: rgba(0,0,0,.3);
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    content: "";
+    float: left;
+    display: block;
+    width: 22px;
+    height: 22px;
+    margin-right: 1em;
+}
+.ui-icon-go:after,
+.ui-icon-blusa:after,
+.ui-icon-gancho:after,
+.ui-icon-uni:after,
+.ui-icon-plan:after {
     background-size: 18px 18px;
+}
+.ui-icon-go:after {
+    background-image: url("../iconos/go.svg");
+}
+.ui-icon-blusa:after {
+    background-image: url("../iconos/blusa.svg");
+}
+.ui-icon-gancho:after {
+    background-image: url("../iconos/gancho.svg");
+}
+.ui-icon-uni:after {
+    background-image: url("../iconos/uni.svg");
+}
+.ui-icon-plan:after {
+    background-image: url("../iconos/plan.svg");
+}
+.ui-collapsible > .ui-collapsible-content > .ui-listview > li > a {
+    padding-left: 2em;
 }
