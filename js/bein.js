@@ -40,9 +40,6 @@ $(document).on("pageinit", function(event, ui) {
     $('#salida').append('jQueryMobile inicializado<br>');
     jqmReady.resolve();
 });
-/**
- * General initialization.
- */
 $.when(jqmReady, pgReady).then(function() {
     $('#salida').append('Frameworks ready. Inicia captura<br>');
     //Initialization code here
@@ -55,13 +52,11 @@ app.initialize(function() {
 });
 function iniciaDispositivo() {
     $('#salida').append('Dispositivo listo<br>');
-    /* */
     if (esPG) {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
         navigator.splashscreen.hide();
     }
-    /* */
 }
 function onPhotoDataSuccess(imageData) {
     $('#tomarFotoDialogo').popup('close');
@@ -90,3 +85,19 @@ function getPhoto(source) {
 function onFail(message) {
     console.log('Failed because: ' + message);
 }
+/* */
+$(function(){
+    $('[data-role="page"]').on('pagecreate', function(){
+        console.log('Cualquier página creada');
+    });
+    $('#inicial').on('pagecreate', function(){
+        $('#tomarFotoDialogo').on("popupafteropen", function(event,ui){
+            var anchoPant = $(document).innerWidth();
+            var anchoPopup = Math.floor(anchoPant*0.9);
+            var margenIzq = Math.floor((anchoPant-anchoPopup)/2);
+            console.log(anchoPant, anchoPopup, margenIzq);
+            $(this).width(anchoPopup);
+        	$('#tomarFotoDialogo-popup').css('left', margenIzq+"px");
+        });
+    });
+});

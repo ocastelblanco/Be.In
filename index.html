@@ -21,13 +21,11 @@
 	</script>
 	<script>
 		$(function(){
-			$("[data-role='header']").toolbar({
+			$("#headerGeneral").toolbar({
 				theme: 'a'
 			});
-			//$("[data-role='footer']").toolbar({theme:'a'});
 		});
 	</script>
-	-->
 </head>
 
 <body>
@@ -50,15 +48,10 @@
     </div><!-- /panel -->
     
 <!-- El siguiente es el header que se aplicará a TODAS las páginas. -->
-    <div data-role="header" data-position="fixed">
+    <div data-role="header" id="headerGeneral" data-position="fixed">
         <h1>Configuración</h1>
         <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menú</a>
     </div><!-- /header -->
-    
-<!-- Es siguientes es el footer que se aplicará a TODAS las páginas ->
-	<div data-role="footer" data-position="fixed">
-		<h1>Pie</h1>
-	</div><!-- /footer -->
 
 <!--------------------------- Inicio del contenido ------------------>
 
@@ -111,7 +104,7 @@
 				</div><!-- /ui-block-a -->
 				<div class="ui-block-b">
 						<a href="#" class="ui-btn ui-icon-grid ui-btn-icon-top" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">
-							Desde la galería
+							Galería
 						</a>
 				</div><!-- /ui-block-b -->
 			</div><!-- /grid-a -->

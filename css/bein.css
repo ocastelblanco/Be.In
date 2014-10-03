@@ -11,6 +11,13 @@
     height: 100%;
     margin-top: 0;
 }
+#tomarFotoDialogo-popup {
+    left: 10px;
+    width: 380px;
+}
+#tomarFotoDialogo-popup .ui-content .ui-icon-delete {
+    top: 0;
+}
 .bein-icon:after {
     background-color: #666;
     background-color: rgba(0,0,0,.3);
