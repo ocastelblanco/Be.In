@@ -59,31 +59,35 @@ function iniciaDispositivo() {
     }
 }
 function onPhotoDataSuccess(imageData) {
+    $('#salida').append('Fin de photoData<br>');
     $('#tomarFotoDialogo').popup('close');
     $('#divFotoB').hide();
     var smallImage = document.getElementById('smallImage');
     smallImage.style.display = 'block';
     smallImage.src = "data:image/jpeg;base64," + imageData;
+    $('#smallImage').show().attr('src',"data:image/jpeg;base64," + imageData);
 }
 function onPhotoURISuccess(imageURI) {
+    $('#salida').append('Fin de photoURI<br>');
     var largeImage = document.getElementById('smallImage');
     largeImage.style.display = 'block';
     largeImage.src = imageURI;
+    $('#smallImage').show().attr('src',imageURI);
 }
 function capturePhoto() {
-    console.log('Iniciando captura');
+   $('#salida').append('Iniciando captura<br>');
     navigator.camera.getPicture(onPhotoDataSuccess, onFail, {quality: 50, destinationType: destinationType.DATA_URL});
 }
 function capturePhotoEdit() {
-    console.log('Iniciando captura con edición');
+    $('#salida').append('Iniciando captura con edición<br>');
     navigator.camera.getPicture(onPhotoDataSuccess, onFail, {quality: 20, allowEdit: true, destinationType: destinationType.DATA_URL});
 }
 function getPhoto(source) {
-    console.log('Iniciando captura de foto existente');
+   $('#salida').append('Iniciando captura de foto existente<br>');
     navigator.camera.getPicture(onPhotoURISuccess, onFail, {quality: 50, destinationType: destinationType.FILE_URI, sourceType: source});
 }
 function onFail(message) {
-    console.log('Failed because: ' + message);
+    $('#salida').append('Failed because: ' + message+'<br>');
 }
 /* */
 $(function(){
