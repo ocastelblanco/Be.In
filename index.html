@@ -5,47 +5,63 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
+	<link rel="stylesheet" href="css/owl.carousel.css" />
+	<link rel="stylesheet" href="css/owl.transitions.css" />
 	<link rel="stylesheet" href="css/bein.css" />
 	<script type="text/javascript" charset="utf-8" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.2.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/owl.carousel.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/bein.js"></script>
-	<script id="panel-init">
-		$(function() {
-			$("body>[data-role='panel']").panel({
-				create: function(e,u){
-					$('[data-role="collapsible-set"]').collapsibleset().enhanceWithin();
-				}
-			});
-		});
-	</script>
-	<script>
-		$(function(){
-			$("#headerGeneral").toolbar({
-				theme: 'a'
-			});
-		});
-	</script>
 </head>
 
 <body>
 <!-- El siquiente es el panel que se aplicará a TODAS las páginas. Ver script "panel-init" -->
     <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="a" id="nav-panel">
-        <a href="#" class="ui-btn" data-rel="close">Anchor</a>
+        <a href="#" class="ui-btn" data-rel="close">Be.in</a>
 		<div data-role="collapsible-set" class="ui-collapsible-set" data-corners="false" data-collapsed-icon="carat-r" data-expanded-icon="carat-d" data-theme="b" id="colapsible">
 			<div data-role="collapsible" data-collapsed="false" data-iconpos="right">
 				<h3><i class="bein-icon ui-icon-go"></i>Me voy a vestir</h3>
 		        <ul data-role="listview" data-theme="a">
-		            <li><a href="#inicial"><i class="bein-icon ui-icon-uni"></i>Universidad</a></li>
-		            <li><a href="#pagina2"><i class="bein-icon ui-icon-plan"></i>Entrevista</a></li>
-		            <li><a href="#inicia3"><i class="bein-icon ui-icon-"></i>De plan</a></li>
-		            <li><a href="#pagina4"><i class="bein-icon ui-icon-plan"></i>Coctel</a></li>
+		            <li><a href="#universidad"><i class="bein-icon ui-icon-uni"></i>Universidad</a></li>
+		            <li><a href="#entrevista"><i class="bein-icon ui-icon-entrevista"></i>Entrevista</a></li>
+		            <li><a href="#plan"><i class="bein-icon ui-icon-plan"></i>De plan</a></li>
+		            <li><a href="#coctel"><i class="bein-icon ui-icon-coctel"></i>Coctel</a></li>
 		        </ul>
-			</div><!-- collapsible -->
+			</div><!-- /collapsible -->
 			<div data-role="collapsible" data-iconpos="right">
 				<h3><i class="bein-icon ui-icon-gancho"></i>Mi Armario</h3>
-				<p>I'm the collapsibleset content for section 2.</p>
-			</div><!-- collapsible -->
+				<div data-role="collapsible-set" class="ui-collapsible-set" data-corners="false" data-collapsed-icon="carat-r" data-expanded-icon="carat-d" data-theme="b" id="colapsible">
+	        		<div data-role="collapsible" class="subColapsible" data-iconpos="right">
+		        		<h3><i class="bein-icon ui-icon-blusa"></i>Blusas</h3>
+		        		<ul data-role="listview" data-theme="a">
+		        			<li><a href="#camisas"><i class="bein-icon ui-icon-blusa"></i>Camisas</a></li>
+		        			<li><a href="#esqueletos"><i class="bein-icon ui-icon-esque"></i>Esqueletos</a></li>
+		        			<li><a href="#camisetas"><i class="bein-icon ui-icon-blusa"></i>Camisetas</a></li>
+		        		</ul>
+	        		</div><!-- /collapsible -->
+	        		<div data-role="collapsible" class="subColapsible" data-iconpos="right">
+		        		<h3><i class="bein-icon ui-icon-pantalones"></i>Pantalones</h3>
+		        		<ul data-role="listview" data-theme="a">
+		        			<li><a href="#pantalones"><i class="bein-icon ui-icon-pantalones"></i>Pantalones formales</a></li>
+		        			<li><a href="#jeans"><i class="bein-icon ui-icon-pantalones"></i>Jeans</a></li>
+		        			<li><a href="#capris"><i class="bein-icon ui-icon-capris"></i>Capris</a></li>
+		        		</ul>
+	        		</div><!-- /collapsible -->
+	        		<div data-role="collapsible" class="subColapsible" data-iconpos="right">
+		        		<h3><i class="bein-icon ui-icon-tacones"></i>Zapatos</h3>
+		        		<ul data-role="listview" data-theme="a">
+		        			<li><a href="#tacones"><i class="bein-icon ui-icon-tacones"></i>Tacones</a></li>
+		        			<li><a href="#casuales"><i class="bein-icon ui-icon-casual"></i>Casuales</a></li>
+		        			<li><a href="#deportivos"><i class="bein-icon ui-icon-deporti"></i>Deportivos</a></li>
+		        		</ul>
+	        		</div><!-- /collapsible -->
+				</div><!-- /collapsible-set -->
+		        <ul data-role="listview" data-theme="a">
+		            <li><a href="#vestidos"><i class="bein-icon ui-icon-vestidos"></i>Vestidos</a></li>
+		            <li><a href="#chaquetas"><i class="bein-icon ui-icon-chaqueta"></i>Chaquetas</a></li>
+		        </ul>
+			</div><!-- /collapsible -->
 		</div><!-- /collapsible-set -->
     </div><!-- /panel -->
     
@@ -61,74 +77,181 @@
 <div data-role="page" id="configuracion">
 	<!-- En la primera página no va contenido, porque es la que determina si hay o no configuración establecida -->
 	<div role="main" class="ui-content">
-		Contenido
-		<div id="botonesFoto" style="display:none;">
-		    <button onclick="capturePhoto();">Capture Photo</button> <br>
-		    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
-		    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
-		    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
-		    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
-		    <img style="display:none;" id="largeImage" src="" />
-	    </div>
+		Configuracion
 	</div><!-- /ui-content -->
 </div><!-- cierre de page -->
 
 <!-- Página inicial de contenido -->
-<div data-role="page" id="inicial">
+<div data-role="page" id="universidad">
 	<div role="main" class="ui-content">
-		Contenido página inicial
-		<div class="ui-grid-a">
-			<div class="ui-block-a">
-				<div class="ui-bar ui-bar-a" style="height:60px">
-					Foto A
-				</div><!-- /ui-bar -->
-			</div><!-- /ui-block-a -->
-			<div class="ui-block-b">
-				<img src="" id="smallImage" style="display: none; width: 100%; height: auto;" />
-				<div class="ui-bar ui-bar-a" id="divFotoB" style="height:60px">
-					<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-notext botonTomarFoto">Nueva foto</a>
-				</div><!-- /ui-bar -->
-			</div><!-- /ui-block-b -->
-		</div><!-- /grid-a -->
-	    <p id="salida"></p>
-	</div><!-- /ui-content -->
-	<!-- popup -->
-	<div data-role="popup" id="tomarFotoDialogo" data-overlay-theme="b" data-dismissible="false">
-		<!--div data-role="header"></div-->
-		<div role="main" class="ui-content">
-			<h4>Seleccione el origen de la imagen</4>
-			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
-			<div class="ui-grid-a">
-				<div class="ui-block-a">
-						<a href="#" class="ui-btn ui-icon-camera ui-btn-icon-top" onclick="capturePhoto();">
-							Cámara
-						</a>
-				</div><!-- /ui-block-a -->
-				<div class="ui-block-b">
-						<a href="#" class="ui-btn ui-icon-grid ui-btn-icon-top" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">
-							Galería
-						</a>
-				</div><!-- /ui-block-b -->
-			</div><!-- /grid-a -->
-		</div><!-- /ui-content -->
-	</div><!-- /popup -->
+		<div class="listaRopa owl-carousel"><!-- En este div van las chaquetas -->
+			<div><img src="ropa/relojdearena/chaquetaAre01.svg"></div>
+		</div>
+		<div class="listaRopa owl-carousel"><!-- En este div van las blusas -->
+			<div><img src="ropa/relojdearena/blusaAre01.svg"></div>
+			<div><img src="ropa/relojdearena/blusaAre02.svg"></div>
+			<div><img src="ropa/relojdearena/blusaAre03.svg"></div>
+		</div>
+		<div class="listaRopa owl-carousel"><!-- En este div van los pantalones -->
+			<div><img src="ropa/relojdearena/pantalonAre01.svg"></div>
+			<div><img src="ropa/relojdearena/pantalonAre02.svg"></div>
+			<div><img src="ropa/relojdearena/pantalonAre03.svg"></div>
+			
+		</div>
+		<div class="listaRopa owl-carousel"><!-- En este div van los zapatos -->
+			
+		</div>
+	</div><!-- fin del ui-content -->
 </div><!-- cierre de page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="pagina2">
+<div role-page="page" id="entrevista">
 	<div class="ui-content">
-		Contenido de la página 2
-		<a href="#pagina3" class="ui-btn ui-btn-icon-left ui-icon-blusa">Ir página 3</a>
+		
+		<div class="listaRopa owl-carousel"><!-- En este div van las chaquetas -->
+			<div><img src="ropa/relojdearena/chaquetaAre01.svg"></div>
+		</div>
+		
+		<div class="listaRopa owl-carousel"><!-- En este div van las vestidos -->
+			<div><img src="ropa/relojdearena/vestidoAre01.svg"></div>
+			<div><img src="ropa/relojdearena/vestidoAre02.svg"></div>
+			<div><img src="ropa/relojdearena/vestidoAre03.svg"></div>
+			<div><img src="ropa/relojdearena/vestidoAre04.svg"></div>
+			<div><img src="ropa/relojdearena/vestidoAre05.svg"></div>
+		</div>
+		
+		<div class="listaRopa owl-carousel"><!-- En este div van los faldas -->
+			<div><img src="ropa/relojdearena/faldaAre01.svg"></div>
+			<div><img src="ropa/relojdearena/faldaAre02.svg"></div>
+		</div>
+		
+		<div class="listaRopa owl-carousel"><!-- En este div van los zapatos -->
+			<div></div>
+		</div>
+		
 	</div>
 </div><!-- Cierre de la page -->
-
 
 <!-- Inicio de la page -->
-<div role-page="page" id="pagina3">
+<div role-page="page" id="plan">
 	<div class="ui-content">
-		Otro contenido en la pagina 3
+	
+		<div class="listaRopa owl-carousel"><!-- En este div van las blusas -->
+			<div><img src="ropa/relojdearena/blusaAre01.svg"></div>
+			<div><img src="ropa/relojdearena/blusaAre02.svg"></div>
+			<div><img src="ropa/relojdearena/blusaAre03.svg"></div>
+		</div>
+		
+		<div class="listaRopa owl-carousel"><!-- En este div van los faldas -->
+			<div><img src="ropa/relojdearena/faldaAre01.svg"></div>
+			<div><img src="ropa/relojdearena/faldaAre02.svg"></div>
+			<div><img src="ropa/relojdearena/pantalonAre01.svg"></div>
+			<div><img src="ropa/relojdearena/pantalonAre02.svg"></div>
+			<div><img src="ropa/relojdearena/pantalonAre03.svg"></div>
+		</div>
+		
 	</div>
 </div><!-- Cierre de la page -->
 
+<!-- Inicio de la page -->
+<div role-page="page" id="coctel">
+	<div class="ui-content">
+
+		<div class="listaRopa owl-carousel"><!-- En este div van las chaquetas -->
+			<div><img src="ropa/relojdearena/chaquetaAre01.svg"></div>
+		</div>
+		
+		<div class="listaRopa owl-carousel"><!-- En este div van las vestidos -->
+			<div><img src="ropa/relojdearena/vestidoAre01.svg"></div>
+			<div><img src="ropa/relojdearena/vestidoAre02.svg"></div>
+			<div><img src="ropa/relojdearena/vestidoAre03.svg"></div>
+			<div><img src="ropa/relojdearena/vestidoAre04.svg"></div>
+			<div><img src="ropa/relojdearena/vestidoAre05.svg"></div>
+		</div>
+	
+	</div>
+</div><!-- Cierre de la page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" id="camisas">
+	<div class="ui-content">
+		solo camisas
+</div><!-- Cierre de la page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" id="esqueletos">
+	<div class="ui-content">
+		solo esqueletos
+	</div>
+</div><!-- Cierre de la page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" id="camiseta">
+	<div class="ui-content">
+		solo camisetas
+	</div>
+</div><!-- Cierre de la page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" id="chaquetas">
+	<div class="ui-content">
+		chaquetas
+	</div>
+</div><!-- Cierre de la page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" id="pantalones">
+	<div class="ui-content">
+		pantalones formales
+	</div>
+</div><!-- Cierre de la page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" id="jeans">
+	<div class="ui-content">
+		jeans
+	</div>
+</div><!-- Cierre de la page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" id="capris">
+	<div class="ui-content">
+	capris
+	</div>
+</div><!-- Cierre de la page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" id="tacones">
+	<div class="ui-content">
+		para coctel
+	</div>
+</div><!-- Cierre de la page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" id="casual">
+	<div class="ui-content">
+		valetas
+	</div>
+</div><!-- Cierre de la page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" id="deporti">
+	<div class="ui-content">
+		para hacer deporte
+	</div>
+</div><!-- Cierre de la page -->
+	
+	<script id="panel-init">
+		$(function() {
+			$("body>[data-role='panel']").panel({
+				create: function(e,u){
+					$('[data-role="collapsible-set"]').collapsibleset().enhanceWithin();
+				}
+			});
+			$("#headerGeneral").toolbar({
+				theme: 'a'
+			});
+		});
+	</script>
 </body>
 </html>

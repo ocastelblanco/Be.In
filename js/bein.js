@@ -94,7 +94,7 @@ $(function(){
     $('[data-role="page"]').on('pagecreate', function(){
         console.log('Cualquier página creada');
     });
-    $('#inicial').on('pagecreate', function(){
+    $('#camisas').on('pagecreate', function(){
         $('#tomarFotoDialogo').on("popupafteropen", function(event,ui){
             var anchoPant = $(document).innerWidth();
             var anchoPopup = Math.floor(anchoPant*0.9);
@@ -103,5 +103,9 @@ $(function(){
             $(this).width(anchoPopup);
         	$('#tomarFotoDialogo-popup').css('left', margenIzq+"px");
         });
+    });
+    $('#universidad').on('pagecreate', function(){
+        console.log('Universidad creada');
+        $('.listaRopa').owlCarousel();
     });
 });

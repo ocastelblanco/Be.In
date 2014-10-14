@@ -6,6 +6,10 @@
 .ui-panel-inner .ui-collapsible-set {
     margin-top: -0.5em;
 }
+.subColapsible {
+    margin-left: -1em !important;
+    margin-right: -1em !important;
+}
 .botonTomarFoto {
     width: 100%;
     height: 100%;
@@ -17,6 +21,18 @@
 }
 #tomarFotoDialogo-popup .ui-content .ui-icon-delete {
     top: 0;
+}
+.listaRopa img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.listaRopa img {
+    width: 100%;
+    display: none;
+}
+.listaRopa img:first-child {
+    display: block;
 }
 .bein-icon:after {
     background-color: #666;
@@ -36,7 +52,20 @@
 .ui-icon-blusa:after,
 .ui-icon-gancho:after,
 .ui-icon-uni:after,
-.ui-icon-plan:after {
+.ui-icon-entrevista:after,
+.ui-icon-plan:after
+.ui-icon-chaqueta:after
+.ui-icon-panatalones:after
+.ui-icon-tacones:after
+.ui-icon-vestidos:after
+.ui-icon-coctel:after
+.ui-icon-camisas:after
+.ui-icon-esque:after
+.ui-icon-camiseta:after
+.ui-icon-jeans:after
+.ui-icon-capris:after
+.ui-icon-casual:after
+.ui-icon-deporti:after{
     background-size: 18px 18px;
 }
 .ui-icon-go:after {
@@ -54,6 +83,46 @@
 .ui-icon-plan:after {
     background-image: url("../iconos/plan.svg");
 }
-.ui-collapsible > .ui-collapsible-content > .ui-listview > li > a {
+.ui-icon-coctel:after {
+    background-image: url("../iconos/coc.svg");
+}
+.ui-icon-entrevista:after {
+    background-image: url("../iconos/entreve.svg");
+}
+.ui-icon-pantalones:after {
+    background-image: url("../iconos/pantalones.svg");
+}
+.ui-icon-vestidos:after {
+    background-image: url("../iconos/vestidos.svg");
+}
+.ui-icon-chaqueta:after {
+    background-image: url("../iconos/chaqueta.svg");
+}
+.ui-icon-tacones:after {
+    background-image: url("../iconos/tacones.svg");
+}
+.ui-icon-esque:after {
+    background-image: url("../iconos/esque.svg");
+}
+.ui-icon-camiseta:after {
+    background-image: url("../iconos/camiseta.svg");
+}
+.ui-icon-jeans:after {
+    background-image: url("../iconos/jeans.svg");
+}
+.ui-icon-capris:after {
+    background-image: url("../iconos/capris.svg");
+}
+.ui-icon-casual:after {
+    background-image: url("../iconos/casual.svg");
+}
+.ui-icon-deporti:after {
+    background-image: url("../iconos/deporti.svg");
+}
+.ui-collapsible > .ui-collapsible-content > .ui-listview > li > a,
+.subColapsible > .ui-collapsible-heading > a {
     padding-left: 2em;
+}
+.subColapsible > .ui-collapsible-content > .ui-listview > li > a {
+    padding-left: 3em;
 }
