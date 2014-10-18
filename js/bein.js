@@ -5,7 +5,7 @@
 var jqmReady = $.Deferred();
 var pgReady = $.Deferred();
 var esPG = false;
-var pictureSource, destinationType;
+var pictureSource, destinationType, baseDatos;
 var app = {
     //Callback for when the app is ready
     callback: null,
@@ -58,7 +58,9 @@ function iniciaDispositivo() {
         destinationType=navigator.camera.DestinationType;
         navigator.splashscreen.hide();
     }
-    iniciaBaseDatos();
+    $('#salida').append('Inicia conexión con Firebase<br>');
+    baseDatos = new Firebase("https://bein.firebaseio.com/");
+    $('#salida').append('Variable baseDatos cargada<br>');
 }
 function onPhotoDataSuccess(imageData) {
     $('#salida').append('Fin de photoData<br>');
@@ -90,26 +92,34 @@ function onPhotoURISuccess(imageURI) {
         tipo:       'uri'
     });
 }
-function capturePhoto() {
-   $('#salida').append('Iniciando captura<br>');
-    navigator.camera.getPicture(onPhotoDataSuccess, onFail, {quality: 50, destinationType: destinationType.DATA_URL});
+function capturePhoto(obj) {
+    var pagina =$(obj).parentsUntil('.pagina').parent().attr('id');
+    $('#'+pagina+' .salida').append('Iniciando captura en '+pagina+'<br>');
+    navigator.camera.getPicture(function(imageData){
+        $('#'+pagina+' .salida').append('Foto capturada en '+pagina+'<br>');
+        var fotosBD = baseDatos.child(pagina);
+        fotosBD.push({
+            fotoData:   imageData,
+            tipo:       'data'
+        });
+    }, function(mensaje){
+        $('#'+pagina+' .salida').append('Fallo debido a '+mensaje+'<br>');
+    }, {quality: 50, destinationType: destinationType.DATA_URL});
+    //navigator.camera.getPicture(onPhotoDataSuccess, onFail, {quality: 50, destinationType: destinationType.DATA_URL});
 }
-function getPhoto(source) {
+function getPhoto(obj, source) {
    $('#salida').append('Iniciando captura de foto existente<br>');
     navigator.camera.getPicture(onPhotoURISuccess, onFail, {quality: 50, destinationType: destinationType.FILE_URI, sourceType: source});
 }
 function onFail(message) {
     $('#salida').append('Failed because: ' + message+'<br>');
 }
-function iniciaBaseDatos() {
-    $('#salida').append('Inicia conexión con Firebase<br>');
-    var baseDatos = new Firebase("https://bein.firebaseio.com/");
-    $('#salida').append('Variable baseDatos cargada<br>');
-    var fotosBD = baseDatos.child('fotosArmario');
-    $('#salida').append('Variable fotosBD cargada<br>');
+function iniciaBaseDatos(pagina) {
+    var fotosBD = baseDatos.child(pagina);
+    $('#'+pagina+' .salida').append('Variable fotosBD cargada en '+pagina+'<br>');
     // La función de captura de carga de nuevas imágenes
     fotosBD.on('value',function(captura){
-        $('#salida').append('Evento value. Nuevas fotos<br>');
+        $('#'+pagina+' .salida').append('Evento value. Nuevas fotos<br>');
         var enlace1 = '<a href="#';
         var enlace2 = '" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="';
         var enlace3 = '"></a></div>';
@@ -119,8 +129,8 @@ function iniciaBaseDatos() {
         var columna = true;
         var celda1 = '<div class="ui-block-';
         var celda2, enlaceTotal, popUpModalTotal;
-        $('#contFotos').html('');
-        $('#popUpModales').html('');
+        $('#'+pagina+' .contFotos').html('');
+        $('#'+pagina+' .popUpModales').html('');
         captura.forEach(function(cadaFoto){
             if (columna) {
                 celda2 = 'a">'
@@ -135,18 +145,15 @@ function iniciaBaseDatos() {
             }
             enlaceTotal = celda1+celda2+enlace1+nombreFoto+enlace2+origenFoto+contFoto.fotoData+enlace3;
             popUpModalTotal = popUpModal1+nombreFoto+popUpModal2+origenFoto+contFoto.fotoData+popUpModal3;
-            $('#contFotos').append(enlaceTotal);
-            $('#popUpModales').append(popUpModalTotal);
-            $('#popUpModales #'+nombreFoto).popup();
+            $('#'+pagina+' .contFotos').append(enlaceTotal);
+            $('#'+pagina+' .popUpModales').append(popUpModalTotal);
+            $('#'+pagina+' .popUpModales #'+nombreFoto).popup();
             columna = !columna;
         });
     });
 }
 /* */
 $(function(){
-    $('[data-role="page"]').on('pagecreate', function(){
-        console.log('Cualquier página creada');
-    });
     $('#camisas').on('pagecreate', function(){
         $('#tomarFotoDialogo').on("popupafteropen", function(event,ui){
             var anchoPant = $(document).innerWidth();
@@ -160,5 +167,10 @@ $(function(){
     $('#universidad').on('pagecreate', function(){
         console.log('Universidad creada');
         $('.listaRopa').owlCarousel();
+    });
+    $('.pagina').on('pageshow', function(event,ui){
+        var nomPagina = $(this).attr('id');
+        console.log('Visualizando página '+nomPagina);
+        iniciaBaseDatos(nomPagina);
     });
 });

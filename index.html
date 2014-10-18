@@ -12,7 +12,7 @@
 	<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.2.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/owl.carousel.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="https://cdn.firebase.com/js/client/1.1.0/firebase.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/firebase.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/bein.js"></script>
 </head>
 
@@ -72,11 +72,6 @@
         <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menú</a>
     </div><!-- /header -->
 
-<!-- Es siguientes es el footer que se aplicará a TODAS las páginas ->
-	<div data-role="footer" id="footerGeneral" data-position="fixed">
-		<h1>Pie</h1>
-	</div><!-- /footer -->
-
 <!--------------------------- Inicio del contenido ------------------>
 
 <!-- Primera página, de configuración -->
@@ -84,6 +79,7 @@
 	<!-- En la primera página no va contenido, porque es la que determina si hay o no configuración establecida -->
 	<div role="main" class="ui-content">
 		Configuracion
+		<p id="salida"></p>
 	</div><!-- /ui-content -->
 </div><!-- cierre de page -->
 
@@ -170,10 +166,9 @@
 <div role-page="page" class="pagina" id="camisas">
 	<div class="ui-content">
 		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
-		<div class="ui-grid-a" id="contFotos">
-		</div><!-- /grid-a -->
-		<div id="popUpModales"></div>
-	    <p id="salida"></p>
+		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
+		<div class="popUpModales"></div><!-- /.popUpModales -->
+	    <p class="salida"></p>
 	</div><!-- /ui-content -->
 	<!-- popup -->
 	<div data-role="popup" id="tomarFotoDialogo" data-overlay-theme="b" data-dismissible="false">
@@ -183,12 +178,12 @@
 			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
 			<div class="ui-grid-a">
 				<div class="ui-block-a">
-						<a href="#" class="ui-btn ui-icon-camera ui-btn-icon-top" onclick="capturePhoto();">
+						<a href="#" class="ui-btn ui-icon-camera ui-btn-icon-top" onclick="capturePhoto(this);">
 							Cámara
 						</a>
 				</div><!-- /ui-block-a -->
 				<div class="ui-block-b">
-						<a href="#" class="ui-btn ui-icon-grid ui-btn-icon-top" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">
+						<a href="#" class="ui-btn ui-icon-grid ui-btn-icon-top" onclick="getPhoto(this, pictureSource.PHOTOLIBRARY);">
 							Galería
 						</a>
 				</div><!-- /ui-block-b -->
@@ -201,6 +196,8 @@
 <div role-page="page" class="pagina" id="esqueletos">
 	<div class="ui-content">
 		solo esqueletos
+		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
+		<div class="popUpModales"></div><!-- /.popUpModales -->
 	</div>
 </div><!-- Cierre de la page -->
 
@@ -208,6 +205,8 @@
 <div role-page="page" class="pagina" id="camisetas">
 	<div class="ui-content">
 		solo camisetas
+		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
+		<div class="popUpModales"></div><!-- /.popUpModales -->
 	</div>
 </div><!-- Cierre de la page -->
 
@@ -278,11 +277,6 @@
 				theme: 'a'
 			});
 			$('.pagina').page();
-			/*
-			$("#footerGeneral").toolbar({
-				theme: 'a'
-			});
-			*/
 		});
 	</script>
 </body>
