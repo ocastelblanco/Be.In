@@ -104,10 +104,12 @@ function onFail(message) {
 function iniciaBaseDatos() {
     $('#salida').append('Inicia conexión con Firebase<br>');
     var baseDatos = new Firebase("https://bein.firebaseio.com/");
+    $('#salida').append('Variable baseDatos cargada<br>');
     var fotosBD = baseDatos.child('fotosArmario');
+    $('#salida').append('Variable fotosBD cargada<br>');
     // La función de captura de carga de nuevas imágenes
     fotosBD.on('value',function(captura){
-        $('#salida').append('Nuevas fotos<br>');
+        $('#salida').append('Evento value. Nuevas fotos<br>');
         var enlace1 = '<a href="#';
         var enlace2 = '" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="';
         var enlace3 = '"></a></div>';
