@@ -58,6 +58,7 @@ function iniciaDispositivo() {
         destinationType=navigator.camera.DestinationType;
         navigator.splashscreen.hide();
     }
+    iniciaBaseDatos();
 }
 function onPhotoDataSuccess(imageData) {
     $('#salida').append('Fin de photoData<br>');
@@ -100,42 +101,45 @@ function getPhoto(source) {
 function onFail(message) {
     $('#salida').append('Failed because: ' + message+'<br>');
 }
-var baseDatos = new Firebase("https://bein.firebaseio.com/");
-var fotosBD = baseDatos.child('fotosArmario');
-// La función de captura de carga de nuevas imágenes
-fotosBD.on('value',function(captura){
-    $('#salida').append('Nuevas fotos<br>');
-    var enlace1 = '<a href="#';
-    var enlace2 = '" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="';
-    var enlace3 = '"></a></div>';
-    var popUpModal1 = '<div data-role="popup" id="';
-    var popUpModal2 = '" data-overlay-theme="b" data-theme="b" data-corners="false"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a><img class="popphoto" src="';
-    var popUpModal3 = '"></div>';
-    var columna = true;
-    var celda1 = '<div class="ui-block-';
-    var celda2, enlaceTotal, popUpModalTotal;
-    $('#contFotos').html('');
-    $('#popUpModales').html('');
-    captura.forEach(function(cadaFoto){
-        if (columna) {
-            celda2 = 'a">'
-        } else {
-            celda2 = 'b">'
-        }
-        var nombreFoto = cadaFoto.name();
-        var contFoto = cadaFoto.val();
-        var origenFoto = '';
-        if (contFoto.tipo == 'data') {
-            origenFoto = 'data:image/jpeg;base64,';
-        }
-        enlaceTotal = celda1+celda2+enlace1+nombreFoto+enlace2+origenFoto+contFoto.fotoData+enlace3;
-        popUpModalTotal = popUpModal1+nombreFoto+popUpModal2+origenFoto+contFoto.fotoData+popUpModal3;
-        $('#contFotos').append(enlaceTotal);
-        $('#popUpModales').append(popUpModalTotal);
-        $('#popUpModales #'+nombreFoto).popup();
-        columna = !columna;
+function iniciaBaseDatos() {
+    $('#salida').append('Inicia conexión con Firebase<br>');
+    var baseDatos = new Firebase("https://bein.firebaseio.com/");
+    var fotosBD = baseDatos.child('fotosArmario');
+    // La función de captura de carga de nuevas imágenes
+    fotosBD.on('value',function(captura){
+        $('#salida').append('Nuevas fotos<br>');
+        var enlace1 = '<a href="#';
+        var enlace2 = '" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="';
+        var enlace3 = '"></a></div>';
+        var popUpModal1 = '<div data-role="popup" id="';
+        var popUpModal2 = '" data-overlay-theme="b" data-theme="b" data-corners="false"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a><img class="popphoto" src="';
+        var popUpModal3 = '"></div>';
+        var columna = true;
+        var celda1 = '<div class="ui-block-';
+        var celda2, enlaceTotal, popUpModalTotal;
+        $('#contFotos').html('');
+        $('#popUpModales').html('');
+        captura.forEach(function(cadaFoto){
+            if (columna) {
+                celda2 = 'a">'
+            } else {
+                celda2 = 'b">'
+            }
+            var nombreFoto = cadaFoto.name();
+            var contFoto = cadaFoto.val();
+            var origenFoto = '';
+            if (contFoto.tipo == 'data') {
+                origenFoto = 'data:image/jpeg;base64,';
+            }
+            enlaceTotal = celda1+celda2+enlace1+nombreFoto+enlace2+origenFoto+contFoto.fotoData+enlace3;
+            popUpModalTotal = popUpModal1+nombreFoto+popUpModal2+origenFoto+contFoto.fotoData+popUpModal3;
+            $('#contFotos').append(enlaceTotal);
+            $('#popUpModales').append(popUpModalTotal);
+            $('#popUpModales #'+nombreFoto).popup();
+            columna = !columna;
+        });
     });
-});
+}
 /* */
 $(function(){
     $('[data-role="page"]').on('pagecreate', function(){
