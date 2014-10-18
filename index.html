@@ -12,6 +12,7 @@
 	<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.2.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/owl.carousel.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="https://cdn.firebase.com/js/client/1.1.0/firebase.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/bein.js"></script>
 </head>
 
@@ -71,10 +72,15 @@
         <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menú</a>
     </div><!-- /header -->
 
+<!-- Es siguientes es el footer que se aplicará a TODAS las páginas ->
+	<div data-role="footer" id="footerGeneral" data-position="fixed">
+		<h1>Pie</h1>
+	</div><!-- /footer -->
+
 <!--------------------------- Inicio del contenido ------------------>
 
 <!-- Primera página, de configuración -->
-<div data-role="page" id="configuracion">
+<div data-role="page" class="pagina" id="configuracion">
 	<!-- En la primera página no va contenido, porque es la que determina si hay o no configuración establecida -->
 	<div role="main" class="ui-content">
 		Configuracion
@@ -82,7 +88,7 @@
 </div><!-- cierre de page -->
 
 <!-- Página inicial de contenido -->
-<div data-role="page" id="universidad">
+<div data-role="page" class="pagina" id="universidad">
 	<div role="main" class="ui-content">
 		<div class="listaRopa owl-carousel"><!-- En este div van las chaquetas -->
 			<div><img src="ropa/relojdearena/chaquetaAre01.svg"></div>
@@ -96,22 +102,19 @@
 			<div><img src="ropa/relojdearena/pantalonAre01.svg"></div>
 			<div><img src="ropa/relojdearena/pantalonAre02.svg"></div>
 			<div><img src="ropa/relojdearena/pantalonAre03.svg"></div>
-			
 		</div>
 		<div class="listaRopa owl-carousel"><!-- En este div van los zapatos -->
-			
+			<div></div>	
 		</div>
 	</div><!-- fin del ui-content -->
 </div><!-- cierre de page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="entrevista">
+<div role-page="page" class="pagina" id="entrevista">
 	<div class="ui-content">
-		
 		<div class="listaRopa owl-carousel"><!-- En este div van las chaquetas -->
 			<div><img src="ropa/relojdearena/chaquetaAre01.svg"></div>
 		</div>
-		
 		<div class="listaRopa owl-carousel"><!-- En este div van las vestidos -->
 			<div><img src="ropa/relojdearena/vestidoAre01.svg"></div>
 			<div><img src="ropa/relojdearena/vestidoAre02.svg"></div>
@@ -119,29 +122,24 @@
 			<div><img src="ropa/relojdearena/vestidoAre04.svg"></div>
 			<div><img src="ropa/relojdearena/vestidoAre05.svg"></div>
 		</div>
-		
 		<div class="listaRopa owl-carousel"><!-- En este div van los faldas -->
 			<div><img src="ropa/relojdearena/faldaAre01.svg"></div>
 			<div><img src="ropa/relojdearena/faldaAre02.svg"></div>
 		</div>
-		
 		<div class="listaRopa owl-carousel"><!-- En este div van los zapatos -->
 			<div></div>
 		</div>
-		
-	</div>
+	</div><!-- fin del ui-content -->
 </div><!-- Cierre de la page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="plan">
+<div role-page="page" class="pagina" id="plan">
 	<div class="ui-content">
-	
 		<div class="listaRopa owl-carousel"><!-- En este div van las blusas -->
 			<div><img src="ropa/relojdearena/blusaAre01.svg"></div>
 			<div><img src="ropa/relojdearena/blusaAre02.svg"></div>
 			<div><img src="ropa/relojdearena/blusaAre03.svg"></div>
 		</div>
-		
 		<div class="listaRopa owl-carousel"><!-- En este div van los faldas -->
 			<div><img src="ropa/relojdearena/faldaAre01.svg"></div>
 			<div><img src="ropa/relojdearena/faldaAre02.svg"></div>
@@ -149,18 +147,15 @@
 			<div><img src="ropa/relojdearena/pantalonAre02.svg"></div>
 			<div><img src="ropa/relojdearena/pantalonAre03.svg"></div>
 		</div>
-		
-	</div>
+	</div><!-- fin del ui-content -->
 </div><!-- Cierre de la page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="coctel">
+<div role-page="page" class="pagina" id="coctel">
 	<div class="ui-content">
-
 		<div class="listaRopa owl-carousel"><!-- En este div van las chaquetas -->
 			<div><img src="ropa/relojdearena/chaquetaAre01.svg"></div>
 		</div>
-		
 		<div class="listaRopa owl-carousel"><!-- En este div van las vestidos -->
 			<div><img src="ropa/relojdearena/vestidoAre01.svg"></div>
 			<div><img src="ropa/relojdearena/vestidoAre02.svg"></div>
@@ -168,76 +163,107 @@
 			<div><img src="ropa/relojdearena/vestidoAre04.svg"></div>
 			<div><img src="ropa/relojdearena/vestidoAre05.svg"></div>
 		</div>
-	
-	</div>
+	</div><!-- fin del ui-content -->
 </div><!-- Cierre de la page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="camisas">
+<div role-page="page" class="pagina" id="camisas">
 	<div class="ui-content">
-		solo camisas
+		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
+		<div class="ui-grid-a" id="contFotos">
+		</div><!-- /grid-a -->
+		<div id="popUpModales"></div>
+	    <p id="salida"></p>
+	</div><!-- /ui-content -->
+	<!-- popup -->
+	<div data-role="popup" id="tomarFotoDialogo" data-overlay-theme="b" data-dismissible="false">
+		<!--div data-role="header"></div-->
+		<div role="main" class="ui-content">
+			<h4>Seleccione el origen de la imagen</4>
+			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+						<a href="#" class="ui-btn ui-icon-camera ui-btn-icon-top" onclick="capturePhoto();">
+							Cámara
+						</a>
+				</div><!-- /ui-block-a -->
+				<div class="ui-block-b">
+						<a href="#" class="ui-btn ui-icon-grid ui-btn-icon-top" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">
+							Galería
+						</a>
+				</div><!-- /ui-block-b -->
+			</div><!-- /grid-a -->
+		</div><!-- /ui-content -->
+	</div><!-- /popup -->
 </div><!-- Cierre de la page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="esqueletos">
+<div role-page="page" class="pagina" id="esqueletos">
 	<div class="ui-content">
 		solo esqueletos
 	</div>
 </div><!-- Cierre de la page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="camiseta">
+<div role-page="page" class="pagina" id="camisetas">
 	<div class="ui-content">
 		solo camisetas
 	</div>
 </div><!-- Cierre de la page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="chaquetas">
-	<div class="ui-content">
-		chaquetas
-	</div>
-</div><!-- Cierre de la page -->
-
-<!-- Inicio de la page -->
-<div role-page="page" id="pantalones">
+<div role-page="page" class="pagina" id="pantalones">
 	<div class="ui-content">
 		pantalones formales
 	</div>
 </div><!-- Cierre de la page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="jeans">
+<div role-page="page" class="pagina" id="jeans">
 	<div class="ui-content">
 		jeans
 	</div>
 </div><!-- Cierre de la page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="capris">
+<div role-page="page" class="pagina" id="capris">
 	<div class="ui-content">
 	capris
 	</div>
 </div><!-- Cierre de la page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="tacones">
+<div role-page="page" class="pagina" id="tacones">
 	<div class="ui-content">
 		para coctel
 	</div>
 </div><!-- Cierre de la page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="casual">
+<div role-page="page" class="pagina" id="casuales">
 	<div class="ui-content">
 		valetas
 	</div>
 </div><!-- Cierre de la page -->
 
 <!-- Inicio de la page -->
-<div role-page="page" id="deporti">
+<div role-page="page" class="pagina" id="deportivos">
 	<div class="ui-content">
 		para hacer deporte
+	</div>
+</div><!-- Cierre de la page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" class="pagina" id="chaquetas">
+	<div class="ui-content">
+		chaquetas
+	</div>
+</div><!-- Cierre de la page -->
+
+<!-- Inicio de la page -->
+<div role-page="page" class="pagina" id="vestidos">
+	<div class="ui-content">
+		vestidos
 	</div>
 </div><!-- Cierre de la page -->
 	
@@ -251,6 +277,12 @@
 			$("#headerGeneral").toolbar({
 				theme: 'a'
 			});
+			$('.pagina').page();
+			/*
+			$("#footerGeneral").toolbar({
+				theme: 'a'
+			});
+			*/
 		});
 	</script>
 </body>
