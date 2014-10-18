@@ -62,40 +62,11 @@ function iniciaDispositivo() {
     baseDatos = new Firebase("https://bein.firebaseio.com/");
     $('#salida').append('Variable baseDatos cargada<br>');
 }
-function onPhotoDataSuccess(imageData) {
-    $('#salida').append('Fin de photoData<br>');
-    $('#tomarFotoDialogo').popup('close');
-    $('#divFotoB').hide();
-    /*
-    var smallImage = document.getElementById('smallImage');
-    smallImage.style.display = 'block';
-    smallImage.src = "data:image/jpeg;base64," + imageData;
-    */
-    $('#smallImage').show().attr('src',"data:image/jpeg;base64," + imageData);
-    fotosBD.push({
-        fotoData:   imageData,
-        tipo:       'data'
-    });
-}
-function onPhotoURISuccess(imageURI) {
-    $('#salida').append('Fin de photoURI<br>');
-    $('#tomarFotoDialogo').popup('close');
-    $('#divFotoB').hide();
-    /*
-    var largeImage = document.getElementById('smallImage');
-    largeImage.style.display = 'block';
-    largeImage.src = imageURI;
-    */
-    $('#smallImage').show().attr('src',imageURI);
-    fotosBD.push({
-        fotoData:   imageURI,
-        tipo:       'uri'
-    });
-}
 function capturePhoto(obj) {
     var pagina =$(obj).parentsUntil('.pagina').parent().attr('id');
     $('#'+pagina+' .salida').append('Iniciando captura en '+pagina+'<br>');
     navigator.camera.getPicture(function(imageData){
+        $('#tomarFotoDialogo').popup('close');
         $('#'+pagina+' .salida').append('Foto capturada en '+pagina+'<br>');
         var fotosBD = baseDatos.child(pagina);
         fotosBD.push({
@@ -105,14 +76,21 @@ function capturePhoto(obj) {
     }, function(mensaje){
         $('#'+pagina+' .salida').append('Fallo debido a '+mensaje+'<br>');
     }, {quality: 50, destinationType: destinationType.DATA_URL});
-    //navigator.camera.getPicture(onPhotoDataSuccess, onFail, {quality: 50, destinationType: destinationType.DATA_URL});
 }
 function getPhoto(obj, source) {
-   $('#salida').append('Iniciando captura de foto existente<br>');
-    navigator.camera.getPicture(onPhotoURISuccess, onFail, {quality: 50, destinationType: destinationType.FILE_URI, sourceType: source});
-}
-function onFail(message) {
-    $('#salida').append('Failed because: ' + message+'<br>');
+    var pagina =$(obj).parentsUntil('.pagina').parent().attr('id');
+    $('#'+pagina+' .salida').append('Iniciando captura desde galería en '+pagina+'<br>');
+    navigator.camera.getPicture(function(imageURI){
+        $('#tomarFotoDialogo').popup('close');
+        $('#'+pagina+' .salida').append('Foto de galería en '+pagina+'<br>');
+        var fotosBD = baseDatos.child(pagina);
+        fotosBD.push({
+            fotoData:   imageURI,
+            tipo:       'uri'
+        });
+    }, function(mensaje){
+        $('#'+pagina+' .salida').append('Fallo debido a '+mensaje+'<br>');
+    }, {quality: 50, destinationType: destinationType.FILE_URI, sourceType: source});
 }
 function iniciaBaseDatos(pagina) {
     var fotosBD = baseDatos.child(pagina);
