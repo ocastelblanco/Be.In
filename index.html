@@ -2,9 +2,13 @@
 <html>
 <head>
 	<title>Be.In</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+	<link href="css/font-awesome.min.css" rel="stylesheet" />
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
+	<link href="css/jquerymobile.nativedroid.css" rel="stylesheet" />
+	<link id="jQMnDTheme" href="css/jquerymobile.nativedroid.dark.css" rel="stylesheet" />
+	<link id="jQMnDColor" href="css/jquerymobile.nativedroid.color.purple.css" rel="stylesheet" />
 	<link rel="stylesheet" href="css/owl.carousel.css" />
 	<link rel="stylesheet" href="css/owl.transitions.css" />
 	<link rel="stylesheet" href="css/bein.css" />
@@ -13,13 +17,14 @@
 	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/owl.carousel.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/firebase.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/nativedroid.script.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/bein.js"></script>
 </head>
 
 <body>
 <!-- El siquiente es el panel que se aplicará a TODAS las páginas. Ver script "panel-init" -->
-    <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="a" id="nav-panel">
-        <a href="#" class="ui-btn" data-rel="close">Be.in</a>
+    <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="b" id="nav-panel">
+        <a href="#inicio" class="ui-btn" data-rel="close"><i class="fa fa-home"></i> Be.in</a>
 		<div data-role="collapsible-set" class="ui-collapsible-set" data-corners="false" data-collapsed-icon="carat-r" data-expanded-icon="carat-d" data-theme="b" id="colapsible">
 			<div data-role="collapsible" data-collapsed="false" data-iconpos="right">
 				<h3><i class="bein-icon ui-icon-go"></i>Me voy a vestir</h3>
@@ -46,7 +51,7 @@
 		        		<ul data-role="listview" data-theme="a">
 		        			<li><a href="#pantalones"><i class="bein-icon ui-icon-pantalones"></i>Pantalones formales</a></li>
 		        			<li><a href="#jeans"><i class="bein-icon ui-icon-pantalones"></i>Jeans</a></li>
-		        			<li><a href="#capris"><i class="bein-icon ui-icon-capris"></i>Capris</a></li>
+		        			<li><a href="#capris"><i class="bein-icon ui-icon-capri"></i>Capris</a></li>
 		        		</ul>
 	        		</div><!-- /collapsible -->
 	        		<div data-role="collapsible" class="subColapsible" data-iconpos="right">
@@ -64,22 +69,72 @@
 		        </ul>
 			</div><!-- /collapsible -->
 		</div><!-- /collapsible-set -->
+        <a href="#configuracion" class="ui-btn" data-rel="close"><i class="fa fa-cog"></i> Configuración</a>
     </div><!-- /panel -->
     
 <!-- El siguiente es el header que se aplicará a TODAS las páginas. -->
     <div data-role="header" id="headerGeneral" data-position="fixed">
         <h1>Configuración</h1>
-        <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menú</a>
+        <a href="#nav-panel" data-icon="bars" data-iconpos="left" id="abrePanel">
+        	<img src="iconos/logobein.svg">
+        </a>
     </div><!-- /header -->
+    
+	<!-- popup -->
+	<div data-role="popup" id="tomarFotoDialogo" data-overlay-theme="b" data-dismissible="false" data-theme="b">
+		<!--div data-role="header"></div-->
+		<div role="main" class="ui-content" data-theme="b">
+			<h4>Seleccione el origen de la imagen</4>
+			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+						<a href="#" class="ui-btn ui-icon-camera ui-btn-icon-top" onclick="capturePhoto(this);">
+							Cámara
+						</a>
+				</div><!-- /ui-block-a -->
+				<div class="ui-block-b">
+						<a href="#" class="ui-btn ui-icon-grid ui-btn-icon-top" onclick="getPhoto(this, pictureSource.PHOTOLIBRARY);">
+							Galería
+						</a>
+				</div><!-- /ui-block-b -->
+			</div><!-- /grid-a -->
+		</div><!-- /ui-content -->
+	</div><!-- /popup -->
 
 <!--------------------------- Inicio del contenido ------------------>
 
 <!-- Primera página, de configuración -->
-<div data-role="page" class="pagina" id="configuracion">
+<div data-role="page" class="pagina" id="configuracion" data-theme="b">
 	<!-- En la primera página no va contenido, porque es la que determina si hay o no configuración establecida -->
 	<div role="main" class="ui-content">
-		Configuracion
+		<img src="iconos/logobein.svg" class="imagenAjusta">
+		<div class="ui-field-contain">
+    		<input type="text" name="nombre" id="nombre" placeholder="Tu nombre" value="">
+			<label for="edad">Tu edad:</label>
+    		<input type="range" name="edad" id="edad" data-highlight="true" min="18" max="25" value="20">
+    		<input type="button" data-icon="carat-r" data-iconpos="right" value="Aceptar" onclick="$.mobile.changePage('#cuerpos')">
+		</div>
 		<p id="salida"></p>
+	</div><!-- /ui-content -->
+</div><!-- cierre de page -->
+
+<!-- Página con listados de cuerpos -->
+<div data-role="page" class="pagina" id="cuerpos" data-theme="b">
+	<div role="main" class="ui-content">
+		<h1>Selecciona tu tipo de cuerpo</h1>
+		<div class="listaRopa owl-carousel"><!-- En este div van los tipos de cuerpo -->
+			<div><img src="cuerpo/relojdearena.svg"></div>
+			<div><img src="cuerpo/triangulo.svg"></div>
+			<div><img src="cuerpo/trianguloInvertido.svg"></div>
+		</div>
+		<a href="#inicio" class="ui-btn ui-icon-carat-r ui-btn-icon-right">Aceptar</a>
+	</div><!-- /ui-content -->
+</div><!-- cierre de page -->
+
+<!-- Página inicial, con widgets -->
+<div data-role="page" class="pagina" id="inicio" data-theme="b">
+	<div role="main" class="ui-content">
+		Esta es la página inicial, con widgets
 	</div><!-- /ui-content -->
 </div><!-- cierre de page -->
 
@@ -170,32 +225,13 @@
 		<div class="popUpModales"></div><!-- /.popUpModales -->
 	    <p class="salida"></p>
 	</div><!-- /ui-content -->
-	<!-- popup -->
-	<div data-role="popup" id="tomarFotoDialogo" data-overlay-theme="b" data-dismissible="false">
-		<!--div data-role="header"></div-->
-		<div role="main" class="ui-content">
-			<h4>Seleccione el origen de la imagen</4>
-			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
-			<div class="ui-grid-a">
-				<div class="ui-block-a">
-						<a href="#" class="ui-btn ui-icon-camera ui-btn-icon-top" onclick="capturePhoto(this);">
-							Cámara
-						</a>
-				</div><!-- /ui-block-a -->
-				<div class="ui-block-b">
-						<a href="#" class="ui-btn ui-icon-grid ui-btn-icon-top" onclick="getPhoto(this, pictureSource.PHOTOLIBRARY);">
-							Galería
-						</a>
-				</div><!-- /ui-block-b -->
-			</div><!-- /grid-a -->
-		</div><!-- /ui-content -->
-	</div><!-- /popup -->
 </div><!-- Cierre de la page -->
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="esqueletos">
 	<div class="ui-content">
 		solo esqueletos
+		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->
 	</div>
@@ -205,6 +241,7 @@
 <div role-page="page" class="pagina" id="camisetas">
 	<div class="ui-content">
 		solo camisetas
+		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->
 	</div>
@@ -214,6 +251,9 @@
 <div role-page="page" class="pagina" id="pantalones">
 	<div class="ui-content">
 		pantalones formales
+		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
+		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
+		<div class="popUpModales"></div><!-- /.popUpModales -->
 	</div>
 </div><!-- Cierre de la page -->
 
@@ -221,6 +261,9 @@
 <div role-page="page" class="pagina" id="jeans">
 	<div class="ui-content">
 		jeans
+		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
+		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
+		<div class="popUpModales"></div><!-- /.popUpModales -->
 	</div>
 </div><!-- Cierre de la page -->
 
@@ -228,6 +271,9 @@
 <div role-page="page" class="pagina" id="capris">
 	<div class="ui-content">
 	capris
+	<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
+		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
+		<div class="popUpModales"></div><!-- /.popUpModales -->
 	</div>
 </div><!-- Cierre de la page -->
 
@@ -235,6 +281,9 @@
 <div role-page="page" class="pagina" id="tacones">
 	<div class="ui-content">
 		para coctel
+		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
+		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
+		<div class="popUpModales"></div><!-- /.popUpModales -->
 	</div>
 </div><!-- Cierre de la page -->
 
@@ -242,6 +291,9 @@
 <div role-page="page" class="pagina" id="casuales">
 	<div class="ui-content">
 		valetas
+		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
+		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
+		<div class="popUpModales"></div><!-- /.popUpModales -->
 	</div>
 </div><!-- Cierre de la page -->
 
@@ -249,6 +301,9 @@
 <div role-page="page" class="pagina" id="deportivos">
 	<div class="ui-content">
 		para hacer deporte
+		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
+		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
+		<div class="popUpModales"></div><!-- /.popUpModales -->
 	</div>
 </div><!-- Cierre de la page -->
 
@@ -256,6 +311,9 @@
 <div role-page="page" class="pagina" id="chaquetas">
 	<div class="ui-content">
 		chaquetas
+		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
+		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
+		<div class="popUpModales"></div><!-- /.popUpModales -->
 	</div>
 </div><!-- Cierre de la page -->
 
@@ -263,6 +321,9 @@
 <div role-page="page" class="pagina" id="vestidos">
 	<div class="ui-content">
 		vestidos
+		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
+		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
+		<div class="popUpModales"></div><!-- /.popUpModales -->
 	</div>
 </div><!-- Cierre de la page -->
 	
@@ -274,9 +335,10 @@
 				}
 			});
 			$("#headerGeneral").toolbar({
-				theme: 'a'
+				theme: 'b'
 			});
-			$('.pagina').page();
+			$("body>[data-role='popup']").enhanceWithin().popup({theme:"a"});
+			$('.pagina').page({theme:"b"});
 		});
 	</script>
 </body>

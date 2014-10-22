@@ -150,5 +150,6 @@ $(function(){
         var nomPagina = $(this).attr('id');
         console.log('Visualizando página '+nomPagina);
         iniciaBaseDatos(nomPagina);
+        $('#headerGeneral h1').html(nomPagina);
     });
 });

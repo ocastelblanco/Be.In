@@ -2,8 +2,8 @@
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.bein-app.app"
-        versionCode = "2" 
-        version     = "0.0.2" >
+        versionCode = "3" 
+        version     = "0.0.3" >
 
     <!-- versionCode is optional and Android only -->
 
@@ -19,7 +19,9 @@
     
     <gap:splash src="splash.png" />
     
-    <gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
-    <gap:plugin name="org.apache.cordova.splashscreen" version="0.2.7" />
+    <icon src="icon.png" />
+    
+    <gap:plugin name="org.apache.cordova.camera" version="0.3.2" />
+    <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.3" />
 
 </widget>

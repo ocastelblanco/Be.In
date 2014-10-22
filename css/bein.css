@@ -6,9 +6,26 @@
 .ui-panel-inner .ui-collapsible-set {
     margin-top: -0.5em;
 }
-.subColapsible {
-    margin-left: -1em !important;
-    margin-right: -1em !important;
+#abrePanel {
+    left: -0.5em;
+    padding: 0 0 0 0.75em;
+    border: 0;
+    width: 48px;
+}
+#abrePanel:after {
+    left: 0;
+    background-color: transparent;
+}
+#abrePanel img {
+    width: 40px;
+    height: auto;
+}
+.imagenAjusta {
+    max-width: 100%;
+    height: auto;
+}
+.ui-content {
+    padding: 0 5px 0 5px;
 }
 .contFotos img {
     max-width: 94%;
@@ -24,6 +41,9 @@
 }
 #tomarFotoDialogo-popup .ui-content .ui-icon-delete {
     top: 0;
+}
+#headerGeneral h1 {
+    text-transform: capitalize;
 }
 .listaRopa img{
     display: block;
@@ -66,7 +86,7 @@
 .ui-icon-esque:after
 .ui-icon-camiseta:after
 .ui-icon-jeans:after
-.ui-icon-capris:after
+.ui-icon-capri:after
 .ui-icon-casual:after
 .ui-icon-deporti:after{
     background-size: 18px 18px;
@@ -113,8 +133,8 @@
 .ui-icon-jeans:after {
     background-image: url("../iconos/jeans.svg");
 }
-.ui-icon-capris:after {
-    background-image: url("../iconos/capris.svg");
+.ui-icon-capri:after {
+    background-image: url("../iconos/capri.svg");
 }
 .ui-icon-casual:after {
     background-image: url("../iconos/casual.svg");
