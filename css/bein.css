@@ -27,6 +27,9 @@
 .ui-content {
     padding: 0 5px 0 5px;
 }
+.ui-input-btn input {
+    background-color: #eeeeee;
+}
 .contFotos img {
     max-width: 94%;
     height: auto;
