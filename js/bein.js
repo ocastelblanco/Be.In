@@ -6,6 +6,8 @@ var jqmReady = $.Deferred();
 var pgReady = $.Deferred();
 var esPG = false;
 var pictureSource, destinationType, baseDatos;
+var nombreUsuaria = "Luisa Castillo";
+var rutaFotoUsuaria;
 var app = {
     //Callback for when the app is ready
     callback: null,
@@ -14,18 +16,18 @@ var app = {
         this.callback = callback;
         var browser = document.URL.match(/^https?:/);
         if(browser) {
-        $('#salida').append('Es web<br>');
+        //$('#salida').append('Es web<br>');
         //In case of web we ignore PhoneGap but resolve the Deferred Object to trigger initialization
             pgReady.resolve();
         } else {
-            $('#salida').append('Es app<br>');
+            //$('#salida').append('Es app<br>');
             this.bindEvents();
             esPG = true;
         }
     }, bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     }, onDeviceReady: function() {
-        $('#salida').append('Cordova PhoneGap inicializado<br>');
+        //$('#salida').append('Cordova PhoneGap inicializado<br>');
         // The scope of 'this' is the event, hence we need to use app.
         app.receivedEvent('deviceready');
     }, receivedEvent: function(event) {
@@ -37,12 +39,12 @@ var app = {
     }
 };
 $(document).on("pageinit", function(event, ui) {
-    $('#salida').append('jQueryMobile inicializado<br>');
+    //$('#salida').append('jQueryMobile inicializado<br>');
     jqmReady.resolve();
     $(this).off("pageinit");
 });
 $.when(jqmReady, pgReady).then(function() {
-    $('#salida').append('Frameworks ready. Inicia captura<br>');
+    //$('#salida').append('Frameworks ready. Inicia captura<br>');
     //Initialization code here
     if(app.callback) {
         app.callback();
@@ -52,49 +54,49 @@ app.initialize(function() {
    iniciaDispositivo();
 });
 function iniciaDispositivo() {
-    $('#salida').append('Dispositivo listo<br>');
+    //$('#salida').append('Dispositivo listo<br>');
     if (esPG) {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
         navigator.splashscreen.hide();
     }
-    $('#salida').append('Inicia conexión con Firebase<br>');
+    //$('#salida').append('Inicia conexión con Firebase<br>');
     baseDatos = new Firebase("https://bein.firebaseio.com/");
-    $('#salida').append('Variable baseDatos cargada<br>');
+    //$('#salida').append('Variable baseDatos cargada<br>');
 }
 function capturePhoto(obj) {
     var pagina =$(obj).parentsUntil('.pagina').parent().attr('id');
-    $('#'+pagina+' .salida').append('Iniciando captura en '+pagina+'<br>');
+    //$('#'+pagina+' .salida').append('Iniciando captura en '+pagina+'<br>');
     navigator.camera.getPicture(function(imageData){
         $('#tomarFotoDialogo').popup('close');
-        $('#'+pagina+' .salida').append('Foto capturada en '+pagina+'<br>');
+        //$('#'+pagina+' .salida').append('Foto capturada en '+pagina+'<br>');
         var fotosBD = baseDatos.child(pagina);
         fotosBD.push({
             fotoData:   imageData,
             tipo:       'data'
         });
     }, function(mensaje){
-        $('#'+pagina+' .salida').append('Fallo debido a '+mensaje+'<br>');
+        //$('#'+pagina+' .salida').append('Fallo debido a '+mensaje+'<br>');
     }, {quality: 50, destinationType: destinationType.DATA_URL});
 }
 function getPhoto(obj, source) {
     var pagina =$(obj).parentsUntil('.pagina').parent().attr('id');
-    $('#'+pagina+' .salida').append('Iniciando captura desde galería en '+pagina+'<br>');
+    //$('#'+pagina+' .salida').append('Iniciando captura desde galería en '+pagina+'<br>');
     navigator.camera.getPicture(function(imageURI){
         $('#tomarFotoDialogo').popup('close');
-        $('#'+pagina+' .salida').append('Foto de galería en '+pagina+'<br>');
+        //$('#'+pagina+' .salida').append('Foto de galería en '+pagina+'<br>');
         var fotosBD = baseDatos.child(pagina);
         fotosBD.push({
             fotoData:   imageURI,
             tipo:       'uri'
         });
     }, function(mensaje){
-        $('#'+pagina+' .salida').append('Fallo debido a '+mensaje+'<br>');
+        //$('#'+pagina+' .salida').append('Fallo debido a '+mensaje+'<br>');
     }, {quality: 50, destinationType: destinationType.FILE_URI, sourceType: source});
 }
 function iniciaBaseDatos(pagina) {
     var fotosBD = baseDatos.child(pagina);
-    $('#'+pagina+' .salida').append('Variable fotosBD cargada en '+pagina+'<br>');
+    $('#'+pagina+' .salida').html('<i class="fa fa-spinner fa-spin"></i> Cargando '+pagina+' en Mi Armario.<br>Espera un momento...');
     // La función de captura de carga de nuevas imágenes
     fotosBD.on('value',function(captura){
         $('#'+pagina+' .salida').append('Evento value. Nuevas fotos<br>');
@@ -128,6 +130,7 @@ function iniciaBaseDatos(pagina) {
             $('#'+pagina+' .popUpModales #'+nombreFoto).popup();
             columna = !columna;
         });
+        $('#'+pagina+' .salida').html('');
     });
 }
 /* */
@@ -137,19 +140,62 @@ $(function(){
             var anchoPant = $(document).innerWidth();
             var anchoPopup = Math.floor(anchoPant*0.9);
             var margenIzq = Math.floor((anchoPant-anchoPopup)/2);
-            console.log(anchoPant, anchoPopup, margenIzq);
+            //console.log(anchoPant, anchoPopup, margenIzq);
             $(this).width(anchoPopup);
         	$('#tomarFotoDialogo-popup').css('left', margenIzq+"px");
         });
     });
     $('#universidad').on('pagecreate', function(){
-        console.log('Universidad creada');
+        //console.log('Universidad creada');
         $('.listaRopa').owlCarousel();
     });
     $('.pagina').on('pageshow', function(event,ui){
         var nomPagina = $(this).attr('id');
-        console.log('Visualizando página '+nomPagina);
+        //console.log('Visualizando página '+nomPagina);
         iniciaBaseDatos(nomPagina);
         $('#headerGeneral h1').html(nomPagina);
     });
+    //$('#inicio').on('pageshow', function(){
+        //console.log('Inicia weather');
+        var meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+        var dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        var hoy = new Date();
+        var hora = (hoy.getHours() > 12) ? (hoy.getHours()-12)+':'+dosDigitos(hoy.getMinutes())+'<span>pm</span>' : hoy.getHours()+':'+dosDigitos(hoy.getMinutes())+'<span>am</span>';
+        var fecha = dias[hoy.getDay()]+', '+hoy.getDate()+' de '+ meses[hoy.getMonth()]+' de '+hoy.getFullYear();
+        $.simpleWeather({
+            location: 'Bogotá, CO',
+            woeid: '',
+            unit: 'c',
+            success: function(weather) {
+              var html = '<div id="hora">'+hora+'</div>';
+              html += '<div id="clima"><i class="icon-'+weather.code+'"></i><h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2></div>';
+              html += '<div id="fecha">'+fecha+'</div>';
+              $("#weather").html(html);
+            },
+            error: function(error) {
+              $("#weather").html('<p>'+error+'</p>');
+            }
+        });
+        $('#saludo').html('¡Hola '+nombreUsuaria.substr(0,nombreUsuaria.indexOf(' '))+'!');
+        var fotoUsuaria = new Firebase('https://bein.firebaseio.com/perfil');
+        fotoUsuaria.on('value', function(captura){
+            var datos = captura.val();
+            rutaFotoUsuaria = datos.fotoData;
+            $('#rostro').html('<img src="'+rutaFotoUsuaria+'">');
+            //console.log('url(\''+datos.fotoData+'\')');
+            //$('#inicio .ui-content:before').css('background-image', datos.fotoData);
+        });
+    //});
+    $('#configuracion').on('pageshow', function(){
+        $('#configuracion #rostro').html('<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop"><img src="'+rutaFotoUsuaria+'"></a>');
+    });
 });
+function dosDigitos(num) {
+    var salida;
+    if (num<10) {
+        salida = '0'+num;
+    } else {
+        salida = num;
+    }
+    return salida;
+}

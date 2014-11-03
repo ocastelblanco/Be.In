@@ -1,4 +1,159 @@
 @charset "UTF-8";
+@font-face {
+    font-family: 'weather';
+    src: url('fonts/artill_clean_icons-webfont.eot');
+    src: url('fonts/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/artill_clean_icons-webfont.woff') format('woff'),
+         url('fonts/artill_clean_icons-webfont.ttf') format('truetype'),
+         url('fonts/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.ui-overlay-b {
+    background-color: rgb(38,43,50);
+}
+#weather,
+#agenda {
+    padding: 0.5em;
+    background-color: rgba(0,0,0,0.5);
+    margin-top: 1em;
+    color: #fff;
+}
+#hora {
+    font-size: 400%;
+    text-align: left;
+    float: left;
+    width: 60%;
+}
+#hora span {
+    font-size: 0.3em;
+    text-transform: lowercase;
+}
+#fecha {
+    font-size: 75%;
+}
+#clima {
+    float: right;
+    width: 40%;
+}
+#weather i {
+    font-family: weather;
+    font-size: 500%;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 0.5;
+    display: block;
+    margin-right: auto;
+    width: 0.8em;
+    margin-left: auto;
+    margin-top: 0.2em;
+}
+#weather h2 {
+    margin: 0;
+    font-size: 250%;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+}
+#agenda h2 {
+    text-align: center;
+    border-bottom: #fff solid 1px;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+}
+#agenda div span:first-child {
+    margin-right: 1em;
+}
+#agenda div i {
+    margin-right: 0.5em;
+}
+#agenda div span:last-child {
+    font-size: 0.8em;
+}
+.icon-0:before { content: ":"; }
+.icon-1:before { content: "p"; }
+.icon-2:before { content: "S"; }
+.icon-3:before { content: "Q"; }
+.icon-4:before { content: "S"; }
+.icon-5:before { content: "W"; }
+.icon-6:before { content: "W"; }
+.icon-7:before { content: "W"; }
+.icon-8:before { content: "W"; }
+.icon-9:before { content: "I"; }
+.icon-10:before { content: "W"; }
+.icon-11:before { content: "I"; }
+.icon-12:before { content: "I"; }
+.icon-13:before { content: "I"; }
+.icon-14:before { content: "I"; }
+.icon-15:before { content: "W"; }
+.icon-16:before { content: "I"; }
+.icon-17:before { content: "W"; }
+.icon-18:before { content: "U"; }
+.icon-19:before { content: "Z"; }
+.icon-20:before { content: "Z"; }
+.icon-21:before { content: "Z"; }
+.icon-22:before { content: "Z"; }
+.icon-23:before { content: "Z"; }
+.icon-24:before { content: "E"; }
+.icon-25:before { content: "E"; }
+.icon-26:before { content: "3"; }
+.icon-27:before { content: "a"; }
+.icon-28:before { content: "A"; }
+.icon-29:before { content: "a"; }
+.icon-30:before { content: "A"; }
+.icon-31:before { content: "6"; }
+.icon-32:before { content: "1"; }
+.icon-33:before { content: "6"; }
+.icon-34:before { content: "1"; }
+.icon-35:before { content: "W"; }
+.icon-36:before { content: "1"; }
+.icon-37:before { content: "S"; }
+.icon-38:before { content: "S"; }
+.icon-39:before { content: "S"; }
+.icon-40:before { content: "M"; }
+.icon-41:before { content: "W"; }
+.icon-42:before { content: "I"; }
+.icon-43:before { content: "W"; }
+.icon-44:before { content: "a"; }
+.icon-45:before { content: "S"; }
+.icon-46:before { content: "U"; }
+.icon-47:before { content: "S"; }
+#saludo {
+    font-size: 3em;
+    text-align: center;
+}
+#rostro {
+    width: 8.1em;
+    border-radius: 4em;
+    border: #fff solid 1px;
+    height: 8.1em;
+    margin: 1em auto 0 auto;
+}
+#inicio .ui-content:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    display: block;
+    background-image: url('https://lh6.googleusercontent.com/-NmVAS5b_DCo/U_FuPWSq9EI/AAAAAAAAC0M/O3RfCHSFdQ4/s577-no/Foto%2Bdel%2Bdi%CC%81a%2B9-08-14%2Ba%2Bla%28s%29%2B12.16.jpg');
+    width: 100%;
+    height: 100%;
+    background-repeat:no-repeat;
+    background-position: center center;
+    -webkit-filter: blur(15px) brightness(0.5);
+    -moz-filter: blur(5px) brightness(0.5);
+    -o-filter: blur(5px) brightness(0.5);
+    -ms-filter: blur(5px) brightness(0.5);
+    filter: blur(5px) brightness(0.5);
+}
+#rostro img {
+    width: 7em;
+    height: auto;
+    border-radius: 7em;
+    border: #fff solid 5px;
+    margin: 0.3em;
+}
 .ui-panel-inner {
     padding: 0;
     margin-top: -0.5em;
@@ -30,6 +185,9 @@
 .ui-input-btn input {
     background-color: #eeeeee;
 }
+.pagina .ui-btn {
+    background: rgba(200,200,200,0.5) !important;
+}
 .contFotos img {
     max-width: 94%;
     height: auto;
@@ -39,11 +197,26 @@
     box-shadow: 1px 2px 2px 0px #7C7C7C;
 }
 #tomarFotoDialogo-popup {
-    left: 10px;
+    left: 10px !important;
     width: 380px;
+    border-radius: 0.25em;
+}
+#tomarFotoDialogo-popup h4 {
+    text-shadow: transparent 0px 0px 0px;
+    color: #fff;
+}
+#tomarFotoDialogo-popup .cerrarPopup {
+    border-radius: 1em;
+}
+#tomarFotoDialogo-popup .ui-grid-a .ui-btn {
+    border-radius: 1em;
 }
 #tomarFotoDialogo-popup .ui-content .ui-icon-delete {
     top: 0;
+}
+#tomarFotoDialogo {
+    border: 0;
+    border-radius: 1em;
 }
 #headerGeneral h1 {
     text-transform: capitalize;
