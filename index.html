@@ -139,20 +139,36 @@
 <div data-role="page" class="pagina" id="cuerpos" data-theme="b">
 	<div role="main" class="ui-content">
 		<h1>Selecciona tu tipo de cuerpo</h1>
-		<div class="listaRopa owl-carousel"><!-- En este div van los tipos de cuerpo -->
-			<div><img src="tiposde/relojdearena.svg"></div>
-			<div><img src="tiposde/triangulo.svg"></div>
-			<div><img src="tiposde/trianguloInvertido.svg"></div>
-			<div><img src="tiposde/rectangulo.svg"></div>
-			<div><img src="tiposde/rectangulo.svg"></div>
+		<div class="listaCuerpos owl-carousel"><!-- En este div van los tipos de cuerpo -->
+			<div>
+				<img src="tiposde/relojdearena.svg">
+				<p>Reloj de Arena</p>
+			</div>
+			<div>
+				<img src="tiposde/triangulo.svg">
+				<p>Triángulo</p>
+			</div>
+			<div>
+				<img src="tiposde/trianguloInvertido.svg">
+				<p>Triángulo Invertido</p>
+			</div>
+			<div>
+				<img src="tiposde/rectangulo.svg">
+				<p>Rectángulo</p>
+			</div>
+			<div>
+				<img src="tiposde/manzana.svg">
+				<p>Manzana</p>
+			</div>
 		</div>
-		<a href="#inicio" class="ui-btn ui-icon-carat-r ui-btn-icon-right">Aceptar</a>
+		<a href="#inicio" class="ui-btn ui-icon-carat-r ui-btn-icon-right seleccionCuerpo">Aceptar</a>
 	</div><!-- /ui-content -->
 </div><!-- cierre de page -->
 
 <!-- Página inicial de contenido -->
 <div data-role="page" class="pagina" id="universidad">
 	<div role="main" class="ui-content">
+		<h2>Para tu cuerpo tipo <span>Reloj de Arena</span> te recomendamos:</h2>
 		<div class="listaRopa owl-carousel"><!-- En este div van las chaquetas -->
 			<div><img src="ropapng/RelojDeArenaChaqueta1.png"></div>
 		</div>
@@ -174,7 +190,8 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="entrevista">
-	<div class="ui-content">
+	<div role="main" class="ui-content">
+		<h2>Para tu cuerpo tipo <span>Reloj de Arena</span> te recomendamos:</h2>
 		<div class="listaRopa owl-carousel"><!-- En este div van las chaquetas -->
 			<div><img src="ropapng/RelojDeArenaChaqueta1.png"></div>
 		</div>
@@ -198,7 +215,8 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="plan">
-	<div class="ui-content">
+	<div role="main" class="ui-content">
+		<h2>Para tu cuerpo tipo <span>Reloj de Arena</span> te recomendamos:</h2>
 		<div class="listaRopa owl-carousel"><!-- En este div van las blusas -->
 			<div><img src="ropapng/RelojDeArenaBlusa1.png"></div>
 			<div><img src="ropapng/RelojDeArenaEsqueleto4.png"></div>
@@ -216,7 +234,8 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="coctel">
-	<div class="ui-content">
+	<div role="main" class="ui-content">
+		<h2>Para tu cuerpo tipo <span>Reloj de Arena</span> te recomendamos:</h2>
 		<div class="listaRopa owl-carousel"><!-- En este div van las chaquetas -->
 			<div><img src="ropapng/RelojDeArenaChaqueta1.png"></div>
 		</div>
@@ -232,7 +251,7 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="camisas">
-	<div class="ui-content">
+	<div role="main" class="ui-content">
 		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->
@@ -242,8 +261,7 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="esqueletos">
-	<div class="ui-content">
-		solo esqueletos
+	<div role="main" class="ui-content">
 		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->
@@ -252,8 +270,7 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="camisetas">
-	<div class="ui-content">
-		solo camisetas
+	<div role="main" class="ui-content">
 		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->
@@ -262,8 +279,7 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="pantalones">
-	<div class="ui-content">
-		pantalones formales
+	<div role="main" class="ui-content">
 		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->
@@ -272,8 +288,7 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="jeans">
-	<div class="ui-content">
-		jeans
+	<div role="main" class="ui-content">
 		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->
@@ -282,8 +297,7 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="capris">
-	<div class="ui-content">
-	capris
+	<div role="main" class="ui-content">
 	<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->
@@ -292,8 +306,7 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="tacones">
-	<div class="ui-content">
-		para coctel
+	<div role="main" class="ui-content">
 		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->
@@ -302,8 +315,7 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="casuales">
-	<div class="ui-content">
-		valetas
+	<div role="main" class="ui-content">
 		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->
@@ -312,8 +324,7 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="deportivos">
-	<div class="ui-content">
-		para hacer deporte
+	<div role="main" class="ui-content">
 		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->
@@ -322,8 +333,7 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="chaquetas">
-	<div class="ui-content">
-		chaquetas
+	<div role="main" class="ui-content">
 		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->
@@ -332,8 +342,7 @@
 
 <!-- Inicio de la page -->
 <div role-page="page" class="pagina" id="vestidos">
-	<div class="ui-content">
-		vestidos
+	<div role="main" class="ui-content">
 		<a href="#tomarFotoDialogo" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-left botonTomarFoto">Nueva foto</a>
 		<div class="ui-grid-a contFotos"></div><!-- /.grid-a -->
 		<div class="popUpModales"></div><!-- /.popUpModales -->

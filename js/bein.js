@@ -7,7 +7,8 @@ var pgReady = $.Deferred();
 var esPG = false;
 var pictureSource, destinationType, baseDatos;
 var nombreUsuaria = "Luisa Castillo";
-var rutaFotoUsuaria;
+var rutaFotoUsuaria, numCuerpo
+var cuerpoUsuaria = "Reloj de Arena";
 var app = {
     //Callback for when the app is ready
     callback: null,
@@ -145,15 +146,28 @@ $(function(){
         	$('#tomarFotoDialogo-popup').css('left', margenIzq+"px");
         });
     });
-    $('#universidad').on('pagecreate', function(){
-        //console.log('Universidad creada');
-        $('.listaRopa').owlCarousel();
+    $('.pagina').on('pagecreate', function(){
+        $('.listaRopa').owlCarousel({
+            singleItem: true
+        });
+    });
+    $('#cuerpos').on('pagecreate', function(){
+        $('.listaCuerpos').owlCarousel({
+            singleItem: true,
+            afterAction : cambiaCuerpo
+        });
     });
     $('.pagina').on('pageshow', function(event,ui){
         var nomPagina = $(this).attr('id');
-        //console.log('Visualizando página '+nomPagina);
         iniciaBaseDatos(nomPagina);
         $('#headerGeneral h1').html(nomPagina);
+        $('.ui-content h2 span').html(cuerpoUsuaria);
+    });
+    function cambiaCuerpo() {
+        numCuerpo = this.owl.currentItem;
+    }
+    $('.seleccionCuerpo').click(function(){
+        cuerpoUsuaria = $('.listaCuerpos .owl-wrapper div:nth-of-type('+(numCuerpo+1)+') p').html();
     });
     //$('#inicio').on('pageshow', function(){
         //console.log('Inicia weather');

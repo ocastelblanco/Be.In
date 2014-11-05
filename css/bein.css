@@ -221,16 +221,22 @@
 #headerGeneral h1 {
     text-transform: capitalize;
 }
-.listaRopa img{
-    display: block;
-    width: 100%;
-    height: auto;
-}
 .listaRopa img {
-    width: 100%;
+    width: 50%;
+    height: auto;
+    margin-left: 25%;
     display: none;
 }
-.listaRopa img:first-child {
+.listaCuerpos img {
+    width: 100%;
+}
+.listaRopa p,
+.listaCuerpos p {
+    text-align: center;
+    font-size: 1.5em;
+}
+.listaRopa img:first-child,
+.listaCuerpos img:first-child {
     display: block;
 }
 .bein-icon:after {
@@ -324,4 +330,11 @@
 }
 .subColapsible > .ui-collapsible-content > .ui-listview > li > a {
     padding-left: 3em;
+}
+.ui-popup .ui-icon-delete {
+    border-radius: 1em;
+    background-color: #000 !important;
+}
+.ui-popup .ui-icon-delete:after {
+    background-color: #000;
 }
